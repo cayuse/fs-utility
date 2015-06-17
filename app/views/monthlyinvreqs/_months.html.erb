@@ -1,0 +1,16 @@
+<% for month in months %>
+  <div>
+    <h3><a href="#"><%= month.strftime("%b %d, %y") -%></a></h3>
+      <div>
+        <%= form_tag :controller => :monthlyinvreqs, :action => :dispatch_pdf do %>
+          <%= render :partial=>'table', :locals => { :month => month, :sitetypes => sitetypes,
+                                                     :monthlyinvreqs => monthlyinvreqs} %>
+          <br />
+          <br />
+          <%= hidden_field :month, :month, :value=>month %>
+
+          <%= submit_tag "District Recap", :name => "submit" %>
+        <% end %>
+      </div>
+  </div>
+<% end %>

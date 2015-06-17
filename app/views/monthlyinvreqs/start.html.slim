@@ -1,0 +1,11 @@
+h1 Select Site Type and Weekday
+div id="rest_of_form"
+ =form_tag :controller=>'monthlyinvreqs', :action=>'new' do
+
+    p Sitetype:
+    =collection_select :monthlyinvreq, :sitetype_id, Sitetype.all, :id, :name
+    p Effective date:
+    =text_field 'monthlyinvreq', 'month', :id => "datepicker"
+    p.=submit_tag "Continue"
+
+= link_to 'Back', monthlyinvreqs_path

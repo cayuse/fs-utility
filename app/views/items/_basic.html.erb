@@ -1,0 +1,86 @@
+<% @item = item; @page = page %>
+<%= form_for(@item) do |f| %>
+  
+<table>
+  <td width=40%>
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      Units Per<br />
+      <%= f.text_field :units %>
+    </p>
+    <p>
+      Unit of issue<br />
+      <%= f.text_field :issue %>
+    </p>
+    <p>
+      <%= render :partial=>'pricehistory', :locals=>{:item => @item} %>
+    </p>
+    <p>
+      <h2>If Updating price enter below:</h2>
+    </p>
+    <p>
+      New Cost:<br />
+      <%= text_field 'price', 'cost' %>
+    </p>
+    <p>
+      New Price:<br />
+      <%= text_field 'price', 'price' %>
+    </p>
+    <p>
+      New Fair Market Value:<br />
+      <%= text_field 'price', 'fmv' %>
+    </p>
+    <p>
+      Effective date:<br />
+      <%= text_field 'price', 'start', :id => "datepicker" %>
+    </p>
+    <p>
+
+        <br>
+    <%= f.submit "Update" %>
+  </td>
+
+  <td width=30%>
+    <br>
+      Available To Sites by Type:
+    <% for sitetype in Sitetype.all %>
+      <div>
+        <%= check_box_tag "item[sitetype_ids][]", sitetype.id,
+          @item.sitetypes.include?(sitetype) %>
+        <%= sitetype.name %>
+      </div>
+    <% end %>
+    <br>
+    <br>
+    <p>
+      Select days item is available (Only required for DFC Order Items)
+    </p>
+    <p>
+      Mon: <%= f.check_box :mon %>
+      Tue: <%= f.check_box :tue %>
+      Wed: <%= f.check_box :wed %>
+      Thu: <%= f.check_box :thu %>
+      Fri: <%= f.check_box :fri %>
+    </p>
+    <p>
+      Item Type:<br>
+      <%= collection_select :item, :itemtype_id, Itemtype.all, :id, :name, {:include_blank => true} %>
+    </p>
+  </p>
+  <%= hidden_field :page, :page, :value=>@page %>
+<% end %>
+<br>
+    <%= form_for @item, :url=> { :action => "expire" } do |a| %>
+      <%= a.hidden_field :id, :value=>@item.id %>
+      <p>Expiration Date:</p>
+            Effective date:<br />
+      Date: <input type="text" id="datepicker1">
+      <%= a.submit 'Expire' %>
+    <% end %>
+  </td>
+
+</table>
+<%= link_to 'Show', @item %>

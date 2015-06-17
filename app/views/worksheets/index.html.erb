@@ -1,0 +1,14 @@
+<div class="clear">
+  <% if current_user.administrator? %>
+<h3><%= link_to 'New Worksheet', new_worksheet_path, {class: "btn btn-default"}%></h3>
+    <%end%>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Worksheets</a></li> 
+  </ul>
+  <div id="tabs-1">
+    <%= render :partial => 'table', :locals => { :worksheets => @worksheets} %>
+  </div>
+<br><br>
+</div>
+</div>

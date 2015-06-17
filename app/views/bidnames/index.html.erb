@@ -1,0 +1,23 @@
+<h1>Listing bidnames</h1>
+
+<table width="50%">
+  <tr>
+    <th width="10%">Name</th>
+    <th width="5%">Click To Download List</th>
+    <% if current_user.bid_admin? %>
+    <th width="5%">Click To Edit</th>
+    <% end %>
+  </tr>
+
+<% @bidnames.each do |bidname| %>
+  <tr>
+    <td><%= link_to bidname.name, bidname %></td>
+    <td><%= link_to "Excel File", bidname_path(bidname, :format => :xls) %></td>
+    <% if current_user.bid_admin? %>
+    <td><%= link_to 'Edit', edit_bidname_path(bidname) %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />

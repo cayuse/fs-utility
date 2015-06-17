@@ -1,0 +1,54 @@
+<p>
+  <b>Site Number:</b>
+  <%=h @site.number %>
+</p>
+
+<p>
+  <b>Site Name:</b>
+  <%=h @site.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @site.address %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%=h @site.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @site.state %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%=h @site.zip %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <td><%=h number_to_phone(@site.phone, :area_code => true) %></td>
+</p>
+
+<p>
+  <b>Manager:</b>
+  <td>
+  <% if (@site.user_id) %>
+    <%=h Goldberg::User.find (@site.user_id).fullname %>
+  <% else %>
+    &nbsp;
+  <% end %>
+  </td>
+</p>
+
+<p>
+  <b>Site Type:</b>
+  <td><%=h Sitetype.find (@site.sitetype_id).name %></td>
+</p>
+
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

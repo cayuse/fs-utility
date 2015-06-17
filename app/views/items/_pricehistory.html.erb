@@ -1,0 +1,19 @@
+<p>Price History:</p>
+<table>
+  <tr>
+    <th width=5%>Cost</th>
+    <th width=5%>Price</th>
+    <th width=5%>FMV</th>
+    <th width=10%>Start Date</th>
+    <th width=10%>Expire Date</th>
+    <% for price in @item.prices %>
+  <tr>
+    <td><%=h number_to_currency(price.cost) %></td>
+    <td><%=h number_to_currency(price.price) %></td>
+    <td><%=h number_to_currency(price.fmv) %></td>
+    <td><%=h price.start %></td>
+    <td><%=h price.expire %></td>
+    <% end %>
+  </tr>
+</table>
+<br><br>

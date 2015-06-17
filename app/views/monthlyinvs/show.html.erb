@@ -1,0 +1,8 @@
+<p>
+  <b>Site:</b>
+  <%=h @monthlyinv.site.name %>
+</p>
+ <% for monthlyinvitem in @monthlyinv.monthlyinvitems.sort %>
+  <%= render :partial => 'show', :locals => {:monthlyinvitem => monthlyinvitem, :open => 'false'} %>
+  <br>
+ <% end %>

@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th width="3%" >Sel</th>
+    <th width="10%">Sitetype</th>
+  </tr>
+  <% for type in monthhash[month] %>
+    <tr>
+      <td> <%= check_box_tag("sitetypes[]", type.id, true, :class=>'sitetype') %> </td>
+      <td><%=  type.name %></td>
+    </tr>
+  <% end %>
+</table>

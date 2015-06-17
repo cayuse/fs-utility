@@ -1,0 +1,5 @@
+tr 
+  td.=h link_to user.fullname, edit_account_path(user)
+  td.=h user.email
+  td.=h user.role
+  td.=h link_to "Delete", { :controller => 'accounts', :action => 'destroy', :id => user }, :confirm => 'Are you sure?', :method => 'delete' 

@@ -1,0 +1,11 @@
+= simple_form_for @diet, :wrapper => 'bootstrap' do |f|
+  = f.input :student_id, :as => :hidden, :input_html => { :value => @diet.student_id }
+  = f.input :schoolyear_id, :as => :hidden, :input_html => { :value => @diet.schoolyear_id }
+  = f.simple_fields_for :diagnoses do |diagnosis|
+    = render 'diagnosis_fields', :f => diagnosis
+  .links
+    = link_to_add_association 'Add Diagnosis', f, :diagnoses, :class => 'btn btn-xs btn-primary'
+
+  |<br>
+  .actions
+    = f.button :submit, :class => 'btn btn-success', :disable_with => 'Please wait ...'

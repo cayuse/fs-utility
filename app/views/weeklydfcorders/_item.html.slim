@@ -1,0 +1,72 @@
+div class="collapsible" id="#{open}" #{h orderitem.item.name} <span></span>
+div class="container"
+  div class="content"
+    = f.simple_fields_for :orderitems, orderitem do |item_form|
+      = item_form.hidden_field :updated_by, :value => current_user.name
+      = item_form.hidden_field :item_id, :value => orderitem.item_id
+      table[style="text-align: center; height: 20px;" border="1" cellpadding="2" cellspacing="1"]
+        thead
+          tr
+            th[width="5%" class="cssTitle6"]Units
+            th[width="5%" class="cssTitle6"]Issue
+            th[width="5%" class="cssTitle6"]Cost
+            th[width="5%" class="cssTitle6"]Price
+            th[width="5%" class="cssTitle6"]&nbsp;
+        tbody
+          tr
+            td[class="cssWeeks1"]#{h orderitem.item.units}
+            td[class="cssWeeks1"]#{h orderitem.item.issue}
+            td[class="cssWeeks1"]#{h number_to_currency(orderitem.item.price_on_date(orderitem.weeklydfcorder.weeklyorderreq.week).cost)}
+            td[class="cssWeeks1"]#{h number_to_currency(orderitem.item.price_on_date(orderitem.weeklydfcorder.weeklyorderreq.week).price)}
+            td[class="cssWeeks1"]&nbsp;
+
+          tr
+            - if orderitem.item.mon and orderitem.weeklydfcorder.weeklyorderreq.mon
+              td[class="cssToday1"]Monday
+            - else
+              td[class="cssNoDay1"]Monday
+            
+            - if orderitem.item.tue and orderitem.weeklydfcorder.weeklyorderreq.tue
+              td[class="cssToday1"]Tuesday
+            - else
+              td[class="cssNoDay1"]Tuesday
+            
+            - if orderitem.item.wed and orderitem.weeklydfcorder.weeklyorderreq.wed
+              td[class="cssToday1"]Wednesday
+            - else
+              td[class="cssNoDay1"]Wednesday
+            
+            - if orderitem.item.thu and orderitem.weeklydfcorder.weeklyorderreq.thu
+              td[class="cssToday1"]Thursday
+            - else
+              td[class="cssNoDay1"]Thursday
+            
+            - if orderitem.item.fri and orderitem.weeklydfcorder.weeklyorderreq.fri
+              td[class="cssToday1"]Friday
+            - else
+              td[class="cssNoDay1"]Friday
+          tr
+            - if orderitem.item.mon and orderitem.weeklydfcorder.weeklyorderreq.mon
+              td[class="cssToday1"]#{ item_form.text_field :monqty, :size=> 5}
+            - else
+              td[class="cssNoDay1"]&nbsp;#{item_form.hidden_field :monqty, :value=>0}
+              
+            - if orderitem.item.tue and orderitem.weeklydfcorder.weeklyorderreq.tue
+              td[class="cssToday1"]#{ item_form.text_field :tueqty, :size=> 5}
+            - else
+              td[class="cssNoDay1"]&nbsp;#{item_form.hidden_field :tueqty, :value=>0}
+              
+            - if orderitem.item.wed and orderitem.weeklydfcorder.weeklyorderreq.wed
+              td[class="cssToday1"]#{ item_form.text_field :wedqty, :size=> 5}
+            - else
+              td[class="cssNoDay1"]&nbsp;#{item_form.hidden_field :wedqty, :value=>0}
+              
+            - if orderitem.item.thu and orderitem.weeklydfcorder.weeklyorderreq.thu
+              td[class="cssToday1"]#{ item_form.text_field :thuqty, :size=> 5}
+            - else
+              td[class="cssNoDay1"]&nbsp;#{item_form.hidden_field :thuqty, :value=>0}
+              
+            - if orderitem.item.fri and orderitem.weeklydfcorder.weeklyorderreq.fri
+              td[class="cssToday1"]#{ item_form.text_field :friqty, :size=> 5}
+            - else
+              td[class="cssNoDay1"]&nbsp;#{item_form.hidden_field :friqty, :value=>0}

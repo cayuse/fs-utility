@@ -1,0 +1,23 @@
+<h1>Editing Order For: <%= @weeklydfcorder.site.name %></h1><br>
+<h2>Week of <%=h @weeklydfcorder.weeklyorderreq.week.strftime("%b %d, %Y") %></h2>
+<%= form_for :weeklydfcorder, :url=>weeklydfcorder_path(@weeklydfcorder), :html=>{:method=>:put} do |f| %>
+
+  <% for orderitem in @weeklydfcorder.orderitems.sort %>
+    <%= fields_for "weeklydfcorder[existing_orderitem_attributes][]", orderitem do |item_form| %>
+      <%= render :partial => 'item', :locals => {:orderitem => orderitem, :item_form => item_form, :open=>"true" } %>
+      <br>
+    <% end %>
+  <% end %>
+  <br>
+  <% for orderitem in @newitems %>
+    <%= fields_for "weeklydfcorder[new_orderitem_attributes][]", orderitem do |item_form| %>
+      <%= render :partial => 'item', :locals => {:orderitem => orderitem, :item_form => item_form, :open=>"false" } %>
+      <br>
+    <% end %>
+  <% end %>
+  <%= hidden_field :referred, :referred, :value=>request.referer %>
+  <p><%= f.submit "Submit", :onclick=>"this.disabled = true; this.value = 'Please Wait...';form.submit()"%> </p>
+<% end %>
+
+<%= link_to 'Show', @weeklydfcorder %> | 
+<%= link_to 'Back', weeklydfcorders_path %>

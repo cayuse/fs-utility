@@ -1,0 +1,34 @@
+<h1>Listing sites</h1>
+
+<table class='table table-striped table-hover'>
+  <tr>
+    <th>Name</th>
+    <th>Number</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Phone</th>
+    <th>Manager</th>
+    <th>Sitetype</th>
+  </tr>
+
+<% for site in @sites %>
+  <tr>
+    <td><%=link_to site.name, edit_site_path(site) %></td>
+    <td><%=h site.number %></td>
+    <td><%=h site.address %></td>
+    <td><%=h site.city %></td>
+    <td><%=h site.state %></td>
+    <td><%=h site.zip %></td>
+    <td><%=h number_to_phone(site.phone, :area_code => true) %></td>
+    <td><%=h display_manager(site) %></td>
+    <td><%=h display_sitetype(site) %></td>
+    <td><%= link_to 'Show', site %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New site', new_site_path %>

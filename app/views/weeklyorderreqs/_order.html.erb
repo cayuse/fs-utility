@@ -1,0 +1,14 @@
+<tr class=<%= row_class %>>
+  <td width=5%>
+    <%= link_to weeklydfcorder.site.name, edit_weeklydfcorder_path(weeklydfcorder) %>
+  </td>
+  <% begin %>
+  <td width=5%><%= number_with_delimiter(weeklydfcorder.orderitems.inject(0) {|i,b| b.allqty + i}) %></td>
+  <td width=5%><%= number_to_currency(weeklydfcorder.orderitems.inject(0.0) {|i,b| b.allcharge + i}) %></td>
+  <td width=5%>
+    <%= link_to 'Report', weeklydfcorder_path(weeklydfcorder, :format=>:pdf) %>
+    <% rescue %>
+    <%end%>
+  </td>
+  <td width=5%> &nbsp;</td>
+</tr>

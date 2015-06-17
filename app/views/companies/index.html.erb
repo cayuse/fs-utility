@@ -1,0 +1,45 @@
+<h1>Listing companies</h1>
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="table-1">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Contact</th>
+    <th>Address1</th>
+    <th>Address2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Phone-1</th>
+    <th>Phone-2</th>
+    <th>Fax</th>
+    <th>Email</th>
+    <% if current_user.bid_admin? %>
+    <th>Destroy?</th>
+    <% end %>
+  </tr>
+</thead>
+<% @companies.each do |company| %>
+  <tr class="gradeA">
+    <td><%= link_to company.name, edit_company_path(company) %></td>
+    <td><%=h company.contact %></td>
+    <td><%=h company.addr1 %></td>
+    <td><%=h company.addr2 %></td>
+    <td><%=h company.city %></td>
+    <td><%=h company.st %></td>
+    <td><%=h company.zip %></td>
+    <td><%=h company.phone1 %></td>
+    <td><%=h company.phone2 %></td>
+    <td><%=h company.fax %></td>
+    <td><%=h company.email %></td>
+    <% if current_user.bid_admin? %>
+    <td><%= link_to 'Destroy', company, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+<br><br>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#table-1').dataTable();
+} );
+</script>

@@ -1,0 +1,24 @@
+<% if current_user -%>
+<p> User:&nbsp;<%= h(current_user.name) %></p>
+<% form_tag :controller => 'goldberg/auth', :action => 'logout' do -%>
+  <p><%= submit_tag "Logout" %></p>
+<p> Current Site:&nbsp;<%= h session[:cursite].name %></p>
+<p> Current Track:&nbsp;
+  <% if session[:curtrack] %>
+    <%= session[:curtrack].name] %>
+  <% else %>
+    <%= 'None' %>
+  <% end %>
+<% form_tag :controller => 'settings', :action => 'edit' do -%>
+  <p><%= submit_tag "Change" %> </p>
+<% end -%>
+
+<% else -%>
+<p> <%= link_to "Login", :controller => 'goldberg/auth', 
+          :action => 'login' %>
+<% if Goldberg.settings.self_reg_enabled -%>
+| <%= link_to "Register", :controller => 'goldberg/users', 
+        :action => 'self_register' %>
+<% end -%>
+</p>
+<% end -%>

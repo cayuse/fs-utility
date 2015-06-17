@@ -1,0 +1,44 @@
+<%= javascript_include_tag 'jquery.tablednd' %>
+<h1>Editing Storage Location</h1>
+
+<h2><%=@storeloc.site.name %></h2>
+
+<%= form_for(@storeloc) do |f| %>
+  
+  <p>
+    <%= f.submit "Update" %>
+  </p
+  <p>
+    Storage Location Name<br />
+    <%= f.text_field :name %>
+  </p>
+<h2> You can also re-order the items here </h2>
+  <table id="table-1" style= background-color: #777; height: 20px;" border="1" cellpadding="2" cellspacing="1">
+    <tr class="nodrop nodrag">
+        <th width="20%">Item Name</th>
+      </tr>
+      <% @storeloc.itemlocs.sort.each do |item| %>
+      <tr bgcolor="#c1c6fd">
+        <%= hidden_field_tag("index[]", item.id.to_i, :class=>'song') -%>
+        <td><%= item.item.name %></td>
+      </tr>
+      <% end %>
+    </table>
+  <br>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<br><br>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      // Initialise the table
+      $("#table-1").tableDnD({
+        onDragClass: "cssNoDay1"
+      });
+  });
+  </script>

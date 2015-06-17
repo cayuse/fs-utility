@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th width="3%" >Sel</th>
+    <th width="10%">Sitetype</th>
+    <th width="5%">Week</th>
+    <th width="5%">Due</th>
+    <th width="5%">Finalized</th>
+    <th width="5%">&nbsp;</th>
+  </tr>
+  <% for type in sitetypes %>
+    <% monthlyinvreq = monthlyinvreqs[type].find{|t| t.month == month} || nil %>
+    <% if !!monthlyinvreq %>
+      <tr>
+        <td><%= check_box_tag("sitetypes[]", type.id, true, :class=>'sitetype') %> </td>
+        <td><%=link_to monthlyinvreq.sitetype.name, monthlyinvreq %></td>
+        <td><%=h monthlyinvreq.month %></td>
+        <td><%=h monthlyinvreq.due %></td>
+        <td><%#=h weeklyorderreq.finalized %></td>
+        <td><%= link_to 'Edit', edit_monthlyinvreq_path(monthlyinvreq) %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

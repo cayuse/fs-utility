@@ -1,0 +1,27 @@
+h1 Editing weeklyorderreq
+= form_for(@weeklyorderreq) do |f|
+  p.= f.label :sitetype_id
+  = collection_select :weeklyorderreq, :sitetype_id, Sitetype.all_with_days, :id, :name
+  p.= f.label :due
+  = text_field 'weeklyorderreq', 'due', :value=>(@weeklyorderreq.due).strftime("%m/%d/%Y"), :id => "datepicker"
+  p Order days This Week.
+  table[width="50%"]
+    tr
+      th[width="10%"]Mon: #{@weeklyorderreq.week}
+      th[width="10%"]Tue: #{@weeklyorderreq.week + 1.day}
+      th[width="10%"]Wed: #{@weeklyorderreq.week + 2.days}
+      th[width="10%"]Thu: #{@weeklyorderreq.week + 3.days}
+      th[width="10%"]Fri: #{@weeklyorderreq.week + 4.days}
+    tr
+      td[align="center"] #{f.check_box :mon, :checked=>@weeklyorderreq.mon}
+      td[align="center"] #{f.check_box :tue, :checked=>@weeklyorderreq.tue}
+      td[align="center"] #{f.check_box :wed, :checked=>@weeklyorderreq.wed}
+      td[align="center"] #{f.check_box :thu, :checked=>@weeklyorderreq.thu}
+      td[align="center"] #{f.check_box :fri, :checked=>@weeklyorderreq.fri}
+  
+  p.= f.submit "Update"
+
+
+= link_to 'Show', @weeklyorderreq
+= " | "
+= link_to 'Back', weeklyorderreqs_path

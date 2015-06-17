@@ -1,0 +1,25 @@
+h1 Editing Monthly Inventory for #{h @monthlyinv.monthlyinvreq.month.strftime("%B-%y")}
+= simple_form_for @monthlyinv do |f|
+
+  div id="tabs"
+    ul
+      - @storelocs.each_with_index do |loc, idx|
+        li
+          a href="#tabs-#{idx}" #{loc.name}
+      - if @monthlyinv_hash[:leftovers]
+        li
+          a href="#tabs-leftovers" Items With Erased Location
+    - @storelocs.each_with_index do |loc, idx|
+      div id="tabs-#{idx}"
+        -@monthlyinv_hash[loc].each do |monthlyinvitem|
+          =render :partial => 'item', :locals => {:monthlyinvitem => monthlyinvitem, :f => f}
+    - if @monthlyinv_hash[:leftovers]
+        div id="tabs-leftovers"
+          -@monthlyinv_hash[:leftovers].each do |monthlyinvitem|
+            = render :partial => 'item', :locals => {:monthlyinvitem => monthlyinvitem, :f => f }
+
+    =hidden_field :referred, :referred, :value=>request.referer
+    -session[:clickcode] = false
+    =f.submit "Update", :onclick=>"this.disabled = true; this.value = 'Please Wait...';form.submit()"
+
+

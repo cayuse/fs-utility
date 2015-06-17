@@ -1,0 +1,20 @@
+<h1>Listing usages</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+
+<% for usage in @usages %>
+  <tr>
+    <td><%=h usage.name %></td>
+    <td><%= link_to 'Show', usage %></td>
+    <td><%= link_to 'Edit', edit_usage_path(usage) %></td>
+    <td><%= link_to 'Destroy', usage, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New usage', new_usage_path %>

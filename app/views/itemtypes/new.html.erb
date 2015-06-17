@@ -1,0 +1,27 @@
+<h1>New itemtype</h1>
+
+<%= form_for(@itemtype) do |f| %>
+  
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+    <p>
+      <br>
+        Select when Item is used:
+      <% for usage in Usage.all %>
+        <div>
+          <%= check_box_tag "itemtype[usage_ids][]", usage.id,
+            @itemtype.usages.include?(usage) %>
+          <%= usage.name %>
+        </div>
+      <% end %>
+    </p>
+    <br>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', itemtypes_path %>

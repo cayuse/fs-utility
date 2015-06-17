@@ -1,0 +1,15 @@
+<table>
+  <tbody><tr>
+    <th>Content</th>
+  </tr>
+
+  <% @notes.each do |note| %>
+    <tr>
+      <td><%= note.entry %></td>
+      <td><%= link_to "Edit", edit_note_path(note), :remote => true %></td>
+      <td><%= link_to "Destroy", note, :remote => true, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>

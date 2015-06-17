@@ -1,0 +1,19 @@
+=link_to "New Student", new_student_path, {class: "btn btn-default"}
+-year = SiteSetting.current_year
+table class='table table-striped table-hover'
+  tr
+    td Diet(Y/N)
+    td Number
+    td Name
+    td Birthdate
+    td Grade
+    td School
+    td Add/Edit Diet
+    td Edit Student Info
+
+  -@students.each do |student|
+    =render :partial => 'student', :locals => {:student => student, :year => year}
+
+= will_paginate @students, renderer: BootstrapPagination::Rails
+br
+=link_to "New Student", new_student_path, {class: "btn btn-default"}

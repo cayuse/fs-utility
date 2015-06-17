@@ -1,0 +1,26 @@
+<h1>Editing sitetype</h1>
+
+<%= form_for(@sitetype) do |f| %>
+  
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    Days for standard order week.
+  </p>
+  <p>
+    Mon: <%= f.check_box :mon %>
+    Tue: <%= f.check_box :tue %>
+    Wed: <%= f.check_box :wed %>
+    Thu: <%= f.check_box :thu %>
+    Fri: <%= f.check_box :fri %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @sitetype %> |
+<%= link_to 'Back', sitetypes_path %>

@@ -1,0 +1,25 @@
+<div class="cssTitle5"
+          tabindex="<%= monthlyinvitem.item.id %>"><%=h monthlyinvitem.item.name %>
+</div>
+<table style="text-align: center; height: 20px;" border="1" cellpadding="2" cellspacing="1">
+  <tbody>
+      <tr>
+        <th width="5%" class="cssWeeks1">Units</th>
+        <th width="5%" class="cssWeeks1">Issue</th>
+        <th width="5%" class="cssWeeks1">Cost</th>
+        <th width="5%" class="cssWeeks1">Price</th>
+      </tr>
+    <tr>
+      <td class="cssWeeks1"><%=h monthlyinvitem.item.units %></td>
+      <td class="cssWeeks1"><%=h monthlyinvitem.item.issue %></td>
+      <td class="cssWeeks1"><%=h number_to_currency(monthlyinvitem.item.price_on_date(monthlyinvitem.monthlyinv.monthlyinvreq.month).cost) %></td>
+      <td class="cssWeeks1"><%=h number_to_currency(monthlyinvitem.item.price_on_date(monthlyinvitem.monthlyinv.monthlyinvreq.month).price) %></td>
+    </tr>
+    <tr>
+      <th class="cssTitle6">Quantity on hand:</th>
+      <th class="cssTitle6"><%= h monthlyinvitem.qty %></th>
+      <th class="cssTitle6">Value:</th>
+      <th class="cssTitle6"><%= h number_to_currency(monthlyinvitem.qty * monthlyinvitem.item.price_on_date(monthlyinvitem.monthlyinv.monthlyinvreq.month).price) %></th>
+    </tr>
+  </tbody>
+</table>

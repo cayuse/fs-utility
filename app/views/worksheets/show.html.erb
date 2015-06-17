@@ -1,0 +1,33 @@
+<p>
+  <b>Name:</b>
+  <%=h @worksheet.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @worksheet.description %>
+</p>
+
+<p>
+  <b>sheet file name:</b>
+  <%=h @worksheet.sheet_file_name %>
+</p>
+
+<p>
+  <b>sheet content type:</b>
+  <%=h @worksheet.sheet_content_type %>
+</p>
+
+<p>
+  <b>sheet file size:</b>
+  <%=h @worksheet.sheet_file_size %>
+</p>
+
+<p>
+  <b>sheet updated at:</b>
+  <%=h @worksheet.sheet_updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_worksheet_path(@worksheet) %> |
+<%= link_to 'Back', worksheets_path %>

@@ -1,0 +1,37 @@
+<% row_class = cycle("cssAlternating1", "cssAlternating2") %>
+<table style="text-align: center; background-color: #777; height: 20px;" border="1" cellpadding="2" cellspacing="1">
+  <tr>
+    <% if params[:search] %>
+    <th width=200px ; class="cssTitle6">Company</th>
+    <% end %>
+    <th width=200px ; class="cssTitle6">Name</th>
+    <th width=100px ; class="cssTitle6">Code</th>
+    <th width=100px ; class="cssTitle6">Servings</th>
+    <th width=100px ; class="cssTitle6">Factor</th>
+    <th width=100px ; class="cssTitle6">Meal Equiv</th>
+    <th width=100px ; class="cssTitle6">File</th>
+    <% if current_user.administrator? %>
+    <th width=50px ; class="cssTitle6">Edit</th>
+    <th width=50px ; class="cssTitle6">DELETE?</th>
+    <% end %>
+  </tr>
+  <% nutritionals.each do |nutritional| %>
+      <% cur_class = "#{row_class}" %>
+  <tr class="<%= cur_class %>">
+    <% if params[:search] %>
+    <td><%=h nutritional.foodvendor.name %></th>
+    <% end %>
+    <td><%=h nutritional.name %></td>
+    <td><%=h nutritional.codenum %></td>
+    <td><%=h nutritional.servings %></td>
+    <td><%=h nutritional.factor %></td>
+    <td><%=h nutritional.mealequiv %></td>
+    <td><%= link_to "View Document", nutritional.attachment.url %>
+    <% if current_user.administrator? %>
+    <td><%= link_to 'Edit', edit_nutritional_path(nutritional) %></td>
+    <td><%= link_to 'Destroy', { :controller => 'nutritionals', :action => 'destroy', :id => nutritional }, :confirm => 'Are you sure?', :method => 'delete' %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
+<br><br>

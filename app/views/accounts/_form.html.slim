@@ -1,0 +1,37 @@
+-if @user.new_record?
+  -urlHash = {:controller => :accounts, :action => :create}
+- else
+  -urlHash = {:controller => :accounts, :action => :update, :id => @user.id}
+=simple_form_for @user, :url => urlHash, :wrapper => 'bootstrap' do |f|
+  div class='container'  
+    div class='row'
+      div class='col-md-3'
+        h4
+          span class='label label-warning' Username
+        h5.= f.input :name, :hint => 'Enter the User Name'
+      div class='col-md-3'
+        h4
+          span class='label label-warning' Role
+        h5.= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]})
+    div class='row'
+      div class='col-md-3'
+        h4
+          span class='label label-warning' Full Name
+        h5.= f.input :fullname, :hint => 'Enter the User Full Name'
+      div class='col-md-3'
+        h4
+          span class='label label-warning' E-Mail
+        h5.= f.input :email, :hint => 'Enter the User email'
+    
+    h2 Sites
+    table
+    -for sitetype in Sitetype.not_empty_sitetypes
+      div
+      = sitetype.name
+      -for site in Site.where(sitetype_id: sitetype.id)
+        div
+        = check_box_tag "user[site_ids][]", site.id, @user.sites.include?(site)
+        = site.name
+    div class='row'
+        .actions
+          = f.button :submit, :disable_with => 'Please wait ...', :class => 'btn btn-success'

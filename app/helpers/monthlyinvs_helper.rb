@@ -1,0 +1,2 @@
+module MonthlyinvsHelper
+end

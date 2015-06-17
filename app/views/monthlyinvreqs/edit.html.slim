@@ -1,0 +1,16 @@
+h1 Editing #{@monthlyinvreq.sitetype.name} Monthly Inventory Request for Month of #{h @date}
+
+= form_for(@monthlyinvreq) do |f|
+  
+
+  p Start Date:
+  =text_field 'monthlyinvreq', 'start', :value=>@monthlyinvreq.start.strftime("%m/%d/%Y"), :id => "datepicker"
+
+  p Due Date:
+  =text_field 'monthlyinvreq', 'due', :value=>@monthlyinvreq.due.strftime("%m/%d/%Y"), :id => "datepicker1"
+
+  p
+  = f.submit "Save"
+
+
+= link_to 'Back', monthlyinvreqs_path

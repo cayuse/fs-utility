@@ -1,0 +1,9 @@
+<h1>Listing Monthly Order Requests</h1>
+
+<%= will_paginate @months, renderer: BootstrapPagination::Rails %>
+<br />
+<div id="accordion">
+  <%= render :partial => 'months', :locals => { :months => @months, :monthhash => @monthhash} %>
+</div>
+
+<br />

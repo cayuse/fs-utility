@@ -1,0 +1,23 @@
+div class="collapsible" id="#{monthlyinvitem.qty ? "open" : "close"}" #{monthlyinvitem.item.name} <span></span>
+div class="container"
+  div class="content"
+    = f.simple_fields_for :monthlyinvitems, monthlyinvitem do |item_form|
+      = item_form.hidden_field :price_id, :value => monthlyinvitem.price.id
+      = item_form.hidden_field :item_id, :value => monthlyinvitem.item.id
+      = item_form.hidden_field :storeloc_id, :value => monthlyinvitem.storeloc_id
+      table[style="text-align: center; height: 20px;" border="1" cellpadding="2" cellspacing="1"]
+        tbody
+          tr
+            th[width="5%" class="cssTitle6"]Units
+            th[width="5%" class="cssTitle6"]Issue
+            th[width="5%" class="cssTitle6"]Cost
+            th[width="5%" class="cssTitle6"]Price
+          tr
+            td[class="cssWeeks1"]#{h monthlyinvitem.item.units}
+            td[class="cssWeeks1"]#{h monthlyinvitem.item.issue}
+            td[class="cssWeeks1"]#{h number_to_currency(monthlyinvitem.item.price_on_date(monthlyinvitem.monthlyinv.monthlyinvreq.month).cost)}
+            td[class="cssWeeks1"]#{h number_to_currency(monthlyinvitem.item.price_on_date(monthlyinvitem.monthlyinv.monthlyinvreq.month).price)}
+          tr
+            td[class="cssToday1" colspan="2"]Quantity on hand decimal value:
+            td[class="cssToday1" colspan="2"]#{item_form.text_field :qty}
+  

@@ -1,0 +1,5 @@
+<% form_tag :controller => :reports, :action => :dispatch do %>
+  <p><%= select_month(Date.today - 1.month)%></p>
+  <p><%= submit_tag "By Site for Month", :name => "submit"  %></p>
+  <p><%= submit_tag "Combined for Month", :name => "submit" %></p>
+<% end %>

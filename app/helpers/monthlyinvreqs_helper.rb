@@ -1,0 +1,2 @@
+module MonthlyinvreqsHelper
+end

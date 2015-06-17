@@ -1,0 +1,98 @@
+  <%= item_form.hidden_field :item_id, :value => orderitem.item.id %>
+  <%= item_form.hidden_field :updated_by, :value => current_user.name %>
+    <div id="CollapsiblePanel<%= orderitem.item.id %>" class="CollapsiblePanel" style="width: 60%">
+      <div class="cssTitle5"
+           onmouseover="this.className='cssTitle2'"
+           onmouseout="this.className='cssTitle5'"><%=h orderitem.item.name %>
+      </div>
+      <div class="CollapsiblePanelContent">
+        <table style="text-align: center; height: 20px;" border="1" cellpadding="2" cellspacing="1">
+          <tbody>
+              <tr>
+                <th width="5%" class="cssTitle6">Units</th>
+                <th width="5%" class="cssTitle6">Issue</th>
+                <th width="5%" class="cssTitle6">Cost</th>
+                <th width="5%" class="cssTitle6">Price</th>
+                <th width="5%" class="cssTitle6">&nbsp;</th>
+              </tr>
+            <tr>
+              <td class="cssWeeks1"><%=h orderitem.item.units %></td>
+              <td class="cssWeeks1"><%=h orderitem.item.issue %></td>
+              <td class="cssWeeks1"><%=h number_to_currency(orderitem.item.price_on_date(orderitem.weeklydfcorder.weeklyorderreq.week).cost) %></td>
+              <td class="cssWeeks1"><%=h number_to_currency(orderitem.item.price_on_date(orderitem.weeklydfcorder.weeklyorderreq.week).price) %></td>
+              <td class="cssWeeks1">&nbsp;</td>
+            </tr>
+            <tr>
+              <% if orderitem.item.mon and orderitem.weeklydfcorder.weeklyorderreq.mon %>
+                <td class="cssToday1">
+              <% else %>
+                <td class="cssNoDay1">
+              <% end %>
+              Monday </td>
+              <% if orderitem.item.tue and orderitem.weeklydfcorder.weeklyorderreq.tue %>
+                <td class="cssToday1">
+              <% else %>
+                <td class="cssNoDay1">
+              <% end %>
+              Tuesday </td>
+              <% if orderitem.item.wed and orderitem.weeklydfcorder.weeklyorderreq.wed %>
+                <td class="cssToday1">
+              <% else %>
+                <td class="cssNoDay1">
+              <% end %>
+              Wednesday </td>
+              <% if orderitem.item.thu and orderitem.weeklydfcorder.weeklyorderreq.thu %>
+                <td class="cssToday1">
+              <% else %>
+                <td class="cssNoDay1">
+              <% end %>
+              Thursday </td>
+              <% if orderitem.item.fri and orderitem.weeklydfcorder.weeklyorderreq.fri %>
+                <td class="cssToday1">
+              <% else %>
+                <td class="cssNoDay1">
+              <% end %>
+              Friday </td>
+            </tr>
+            <tr>
+              <% if orderitem.item.mon and orderitem.weeklydfcorder.weeklyorderreq.mon %>
+                <td class="cssToday1"> <%= item_form.text_field :monqty, :size=> 5 %>
+              <% else %>
+                <td class="cssNoDay1">&nbsp; <%= item_form.hidden_field :monqty, :value=>0 %>
+              <% end %>
+              </td>
+              <% if orderitem.item.tue and orderitem.weeklydfcorder.weeklyorderreq.tue %>
+                <td class="cssToday1"> <%= item_form.text_field :tueqty, :size=> 5 %>
+              <% else %>
+                <td class="cssNoDay1">&nbsp; <%= item_form.hidden_field :tueqty, :value=>0 %>
+              <% end %>
+              </td>
+              <% if orderitem.item.wed and orderitem.weeklydfcorder.weeklyorderreq.wed %>
+                <td class="cssToday1"> <%= item_form.text_field :wedqty, :size=> 5 %>
+              <% else %>
+                <td class="cssNoDay1">&nbsp; <%= item_form.hidden_field :wedqty, :value=>0 %>
+              <% end %>
+              </td>
+              <% if orderitem.item.thu and orderitem.weeklydfcorder.weeklyorderreq.thu %>
+                <td class="cssToday1"> <%= item_form.text_field :thuqty, :size=> 5 %>
+              <% else %>
+                <td class="cssNoDay1">&nbsp; <%= item_form.hidden_field :thuqty, :value=>0 %>
+              <% end %>
+              </td>
+              <% if orderitem.item.fri and orderitem.weeklydfcorder.weeklyorderreq.fri %>
+                <td class="cssToday1"> <%= item_form.text_field :friqty, :size=> 5 %>
+              <% else %>
+                <td class="cssNoDay1">&nbsp; <%= item_form.hidden_field :friqty, :value=>0 %>
+              <% end %>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script type="text/javascript">
+      <!--
+      var CollapsiblePanel<%= orderitem.item.id %> = new Spry.Widget.CollapsiblePanel("CollapsiblePanel<%= orderitem.item.id %>",{contentIsOpen:<%= "#{open}" %>});
+      //-->
+    </script>

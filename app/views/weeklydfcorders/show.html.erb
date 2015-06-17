@@ -1,0 +1,44 @@
+<p>
+  <b>Weeklyorderreq:</b>
+  <%=h @weeklydfcorder.weeklyorderreq.week %>
+</p>
+
+<p>
+  <b>Site:</b>
+  <%=h @weeklydfcorder.site.name %>
+</p>
+<% @weeklydfcorder.orderitems.each do |orderitem| %>
+<p>
+  <b>Item:</b>
+  <%=h orderitem.item.name %>
+</p>
+
+<p>
+  <b>Monqty:</b>
+  <%=h orderitem.monqty %>
+</p>
+
+<p>
+  <b>Tueqty:</b>
+  <%=h orderitem.tueqty %>
+</p>
+
+<p>
+  <b>Wedqty:</b>
+  <%=h orderitem.wedqty %>
+</p>
+
+<p>
+  <b>Thuqty:</b>
+  <%=h orderitem.thuqty %>
+</p>
+
+<p>
+  <b>Friqty:</b>
+  <%=h orderitem.friqty %>
+</p>
+<% end %>
+
+
+<%= link_to 'Edit', edit_weeklydfcorder_path(@weeklydfcorder) %> |
+<%= link_to 'Back', weeklydfcorders_path %>

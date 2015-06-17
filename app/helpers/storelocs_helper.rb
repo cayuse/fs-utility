@@ -1,0 +1,2 @@
+module StorelocsHelper
+end

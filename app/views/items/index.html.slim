@@ -1,0 +1,20 @@
+h1 Listing Items
+= form_tag items_path, :method => 'get' do
+  p
+    =text_field_tag :search, params[:search]
+    =submit_tag "Search", :name => nil
+
+br
+p
+= button_to 'New item', new_item_path
+br
+br
+
+
+- @items.each do |item|
+  = render :partial=>'item', :locals=>{:item => item, :page => @page}
+br
+
+= will_paginate @items
+br
+= button_to 'New item', new_item_path

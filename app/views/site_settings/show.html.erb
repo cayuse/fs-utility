@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @site_setting.schoolyear %>
+</p>
+
+<%= link_to 'Edit', edit_site_setting_path(@site_setting) %> |
+<%= link_to 'Back', site_settings_path %>

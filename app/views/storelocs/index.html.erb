@@ -1,0 +1,32 @@
+<%= javascript_include_tag 'jquery.tablednd' %>
+ <%= form_tag :controller => :storelocs, :action => :update_order do %>
+  <br>
+    <h1> Reorder Storage Locations </h1>
+  <table id="table-1" style= background-color: #777; height: 20px;" border="1" cellpadding="2" cellspacing="1">
+    <tr class="nodrop nodrag">
+        <th width="20%">Name</th>
+        <th width="10%">Delete?</th>
+      </tr>
+      <% @storelocs.sort.each do |item| %>
+      <tr bgcolor="#c1c6fd">
+        <%= hidden_field_tag("index[]", item.id.to_i, :class=>'song') -%>
+        <td><%= link_to item.name, edit_storeloc_path(item) %></td>
+        <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+      <% end %>
+    </table>
+  <br>
+  <%= submit_tag "Set Order", :name => "submit" %>
+<% end %>
+<br><br>
+<%= link_to 'New Storage Location', new_storeloc_path %>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      // Initialise the table
+      $("#table-1").tableDnD({
+        onDragClass: "cssNoDay1"
+      });
+  });
+  </script>

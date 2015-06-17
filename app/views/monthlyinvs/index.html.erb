@@ -1,0 +1,49 @@
+<h1>Listing Monthly Inventories</h1>
+<% today = Date.today %>
+
+<table>
+  <tr>
+    <th>Edit</th>
+    <th>For Month</th>
+    <th>Available</th>  
+    <th>Due</th>
+    <th>Show</th>
+    <th>Report</th>
+  </tr>
+  <% for monthlyinvreq in @monthlyinvreqs %>
+    <% a = @monthlyinvs.find{|t| t.monthlyinvreq == monthlyinvreq} %>
+    <% if today > monthlyinvreq.due %>
+      <tr class="cssDue4">
+    <% elsif (today > monthlyinvreq.due - 1.week) %>
+      <tr class="cssNoDay1">
+    <% else %>
+      <tr class="cssDue2">
+    <% end %>
+      <td width="5%">
+        <% if today <= monthlyinvreq.due && today >= monthlyinvreq.start %>
+          <% if a %>
+            <%= link_to monthlyinvreq.month.strftime("Edit Inventory %b-%y"), edit_monthlyinv_path(a) %>
+            &nbsp;&nbsp;<%= link_to 'Worksheet', edit_monthlyinv_path(a, :format => :pdf) %>
+          <% else %>
+            <%= link_to monthlyinvreq.month.strftime("New Inventory %b-%y"), controller: "monthlyinvs", action: "create", id: monthlyinvreq %>
+          <% end %>
+        <% else %>
+          &nbsp;
+        <% end %>
+      </td>
+      <td width="5%"><%=h monthlyinvreq.month.strftime("%B") %></td>
+      <td width="5%"><%=h monthlyinvreq.start.strftime("%b %d, %y") %></td>
+      <td width="5%"><%=h monthlyinvreq.due.strftime("%b %d, %y") %></td>
+        <% if a %>
+          <td width="5%"><%= link_to 'Show', a %></td>
+          <td width="5%"><%= link_to 'Report', monthlyinv_path(a , :format => :pdf) %></td>
+
+        <% else %>
+          <td width="5%">&nbsp;</td>
+          <td width="5%">&nbsp;</td>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+

@@ -1,0 +1,43 @@
+<h1>Editing Item</h1>
+
+<%= form_for @nutritional, :html => { :multipart => true } do |f| %>
+  
+  <p>
+    Item Name<br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    Item Code Number<br />
+    <%= f.text_field :codenum %>
+  </p>
+  <p>
+    Item Servings Per Case<br />
+    <%= f.text_field :servings %>
+  </p>
+  <p>
+    Item Factor<br />
+    <%= f.text_field :factor %>
+  </p>
+  <p>
+    Item Meal Equivelency<br />
+    <%= f.text_field :mealequiv %>
+  </p>
+<br >
+
+  <p>
+    <%= link_to "View Existing Document", @nutritional.attachment.url %>
+  </p>
+  <p>
+    Use the following only to change this item's Specification Sheet:<br />
+    <%= f.file_field :attachment %>
+  </p>
+  <p>
+    Search Terms<br />
+    <%= f.text_area :search %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+<br>
+<%= link_to 'Back', @nutritional.foodvendor %>

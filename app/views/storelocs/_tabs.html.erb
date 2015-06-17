@@ -1,0 +1,17 @@
+<div id="replaceable">
+<% items.each do |item| %>
+<div id="<%= item.id%>" class="drag t3 clone"><%= hidden_field_tag("index[none][]", item.id , :class=>'song') -%><%=h item.name %></div>
+<%end %>
+</div>
+
+<script type="text/javascript">
+    var rd = REDIPS.drag;
+    rd.init();
+				rd.myhandler_dropped    = function () {
+					var ri = REDIPS.drag.current_cell.parentNode.rowIndex,
+						ci = REDIPS.drag.current_cell.cellIndex,
+                                                tc = REDIPS.drag.top_cell.childNodes[1].name;
+                                        rd.obj.childNodes[0].name = 'index' + '[' + tc + ']' + '[]';
+				}
+
+</script>

@@ -1,0 +1,24 @@
+<h1>Editing monthlyinvitem</h1>
+
+<%= form_for(@monthlyinvitem) do |f| %>
+  
+
+  <p>
+    <%= f.label :monthlyinv %><br />
+    <%= f.text_field :monthlyinv %>
+  </p>
+  <p>
+    <%= f.label :item %><br />
+    <%= f.text_field :item %>
+  </p>
+  <p>
+    <%= f.label :qty %><br />
+    <%= f.text_field :qty %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @monthlyinvitem %> |
+<%= link_to 'Back', monthlyinvitems_path %>

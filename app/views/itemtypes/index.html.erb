@@ -1,0 +1,18 @@
+<h1>Listing Item Types</h1>
+
+<table>
+  <tr>
+    <th width=40%>Name</th>
+  </tr>
+
+<% for itemtype in @itemtypes %>
+    <% bgcolor = (itemtype.colorcode || "FFFFFF") %>
+    <tr bgcolor="#<%= bgcolor %>">
+    <td><%= link_to itemtype.name, edit_itemtype_path(itemtype) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Item Type', new_itemtype_path %>

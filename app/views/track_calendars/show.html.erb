@@ -1,0 +1,18 @@
+<p>
+  <b>Track:</b>
+  <%=h @track_calendar.track %>
+</p>
+
+<p>
+  <b>Start:</b>
+  <%=h @track_calendar.start %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%=h @track_calendar.end %>
+</p>
+
+
+<%= link_to 'Edit', edit_track_calendar_path(@track_calendar) %> |
+<%= link_to 'Back', track_calendars_path %>

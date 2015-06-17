@@ -1,0 +1,11 @@
+<h1>Search For a Specification Sheet</h1>
+<% form_tag nutritionals_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<%= render :partial=>'table', :locals=>{:nutritionals => @nutritionals} %>
+
+<%= will_paginate @nutritionals %>

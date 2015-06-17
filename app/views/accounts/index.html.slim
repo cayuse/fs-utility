@@ -1,0 +1,9 @@
+h1 Users
+
+= form_tag accounts_path, :method => 'get', :id => "user_search" do
+  p
+    =text_field_tag :search, params[:search]
+    =submit_tag "Search", :name => nil
+
+div id="users"
+  =render 'index_table'

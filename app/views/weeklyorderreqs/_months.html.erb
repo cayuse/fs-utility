@@ -1,0 +1,16 @@
+<% for month in months %>
+  <div>
+    <h3><a href="#"><%= month.strftime("%b %d, %y") -%></a></h3>
+      <div>
+        <%= form_tag :controller => :weeklyorderreqs, :action => :monthsdispatch do %>
+          <%= render :partial=>'monthstable', :locals => { :month => month, :monthhash => monthhash } %>
+          <br />
+          <br />
+          <%= hidden_field :month, :month, :value=>month %>
+
+          <%= submit_tag "Separate by Site", :name => "submit" %>
+          <%= submit_tag "Combined Total", :name => "submit" %>
+        <% end %>
+      </div>
+  </div>
+<% end %>  

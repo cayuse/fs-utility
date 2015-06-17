@@ -1,0 +1,43 @@
+<li>
+  <a id="dLabel" role="button" data-toggle="dropdown" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown" data-target="#" href="/page.html">
+  Admin <span class="caret"></span></a>
+    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+      <li class="dropdown-submenu">
+        <a tabindex="-1" href="#">District Admin</a>
+        <ul class="dropdown-menu">
+          <li class="dropdown-submenu">
+            <a href="#">Sites</a>
+            <ul class="dropdown-menu">
+              <li><a href="/sites">School Site Admin</a></li>
+             	<li><a href="/sitetypes">Site Types</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a href="#">Item Admin</a>
+            <ul class="dropdown-menu">
+              <li><a href="/items">Items</a></li>
+             	<li><a href="/itemtypes">Item Types</a></li>
+              <li><a href="/usages">Usages</a></li>
+              <li><a href="/allergens">Allergens</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a href="#">Order Admin</a>
+            <ul class="dropdown-menu">
+              <li><a href="/weeklyorderreqs">Order Requests</a></li>
+             	<li><a href="/weeklyorderreqs/monthlyindex">Monthly Reports</a></li>
+            </ul>
+          </li>
+          <li class="dropdown-submenu">
+            <a href="#">Inventory Admin</a>
+            <ul class="dropdown-menu">
+              <li><a href="/monthlyinvreqs">Monthly Inv Requests</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+	  <% if canView[:admin] %>
+			<%= render partial: 'layouts/admin', :locals => {:canView => canView} %>
+	  <% end %>
+    </ul>
+</li>

@@ -1,0 +1,12 @@
+<h1>Edit settings</h1>
+
+<p> Current Site:&nbsp;<%= display_site(current_user) %> </p>
+
+<%= form_tag :action => 'update' do%>
+  <p><%= collection_select :setting, :site_id, @sites, :id, :name %></p>
+
+<p>Current Track:&nbsp;<%= display_track(current_user) %></p>
+  <p><%= collection_select :setting, :track_id, @tracks, :id, :name %></p>
+  
+  <%= submit_tag "Update" %>
+<% end %>

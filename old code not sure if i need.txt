@@ -1,0 +1,61 @@
+weeklyorderreq
+$(document).ready(function() {
+  $("#accordion").accordion({ header: "h3" });
+});
+
+
+weeklydfcorders
+
+$(document).on("ready", function(){
+    $('.collapsible').collapsible({defaultOpen: 'open'});
+});
+
+
+student
+
+$(function() {
+  $( "#datepicker" ).datepicker({
+    changeYear: true
+  });
+});
+
+
+storelocs
+//= require drag
+//= require dragdrop
+$(document).on("ready page:load", function() {
+    var rd = REDIPS.drag;
+    rd.init();
+	  rd.myhandler_dropped    = function () {
+		var ri = REDIPS.drag.current_cell.parentNode.rowIndex,
+			ci = REDIPS.drag.current_cell.cellIndex,
+			tc = REDIPS.drag.top_cell.childNodes[1].name;
+		rd.obj.childNodes[0].name = 'index' + '[' + tc + ']' + '[]';
+	  }
+  });
+
+
+monthlyinv
+$(document).on("ready page:load", function(){
+    $("#tabs").tabs();
+    $('.collapsible').collapsible({
+        defaultOpen: 'open'
+    });
+});
+
+monthlyinvreq
+
+$(document).on("ready page:change", function() {
+  $( "#datepicker" ).datepicker();
+  $( "#datepicker1" ).datepicker();
+  $("#accordion").accordion({ header: "h3" });
+});
+
+
+items
+
+$(document).ready(function() {
+    $( "#datepicker" ).datepicker();
+    $( "#datepicker1" ).datepicker();
+    $("#tabs").tabs({});
+} );

@@ -1,0 +1,11 @@
+<tr class=<%= row_class %>>
+  <td width=5%>
+    <%= link_to monthlyinv.site.name, edit_monthlyinv_path(monthlyinv) %>
+  </td>
+  <td width=5%>&nbsp;</td>
+  <td width=5%>&nbsp;</td>
+  <td width=5%>
+    <%= link_to 'Report', monthlyinv_path(monthlyinv, :format=>:pdf) %>
+  </td>
+  <td width=5%> &nbsp;</td>
+</tr>

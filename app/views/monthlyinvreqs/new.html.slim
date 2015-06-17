@@ -1,0 +1,18 @@
+h1 #{@sitetype.name} Monthly Inventory Request for Month of #{h @date}
+
+= form_for(@monthlyinvreq) do |f|
+  
+
+  p Start Date:
+  =text_field 'monthlyinvreq', 'start', :value=>(@date.end_of_month - 1.week).strftime("%m/%d/%Y"), :id => "datepicker"
+
+  p Due Date:
+  =text_field 'monthlyinvreq', 'due', :value=>(@date.end_of_month + 1.week).strftime("%m/%d/%Y"), :id => "datepicker1"
+
+  = hidden_field :monthlyinvreq, :sitetype_id, :value=>@sitetype.id
+  = hidden_field :monthlyinvreq, :month, :value=>@date
+  p
+  = f.submit "Create"
+
+
+= link_to 'Back', monthlyinvreqs_path

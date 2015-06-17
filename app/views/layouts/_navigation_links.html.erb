@@ -1,0 +1,49 @@
+<%# add navigation links to this file %>
+<% canView = canViewForUser(current_user) %>
+<ul class="nav navbar-nav">
+<% if (canView[:distAdmin] || canView[:admin]) %>
+  <%= render partial: 'layouts/distadmin', :locals => {:canView => canView} %>
+<% end %>
+
+<% if canView[:orderSystem] %>
+  <%= render partial: 'layouts/ordersystem', :locals => {:canView => canView} %>
+<% end %>
+
+<% if canView[:inventory] %>
+  <%= render partial: 'layouts/inventory', :locals => {:canView => canView} %>
+<% end %>
+
+<% if canView[:documents] %>
+  <%= render partial: 'layouts/documents', :locals => {:canView => canView} %>
+<% end %>
+
+<% if canView[:bidInfo] %>
+  <%= render partial: 'layouts/bidinfo', :locals => {:canView => canView} %>
+<% end %>
+
+<% if (canView[:distAdmin]) %>
+  <%= render partial: 'layouts/students', :locals => {:canView => canView} %>
+<% end %>
+</ul>
+
+<%# The Rest of this Is Just to log-in/out and general 'about'%>
+<ul class="nav navbar-nav navbar-right">
+<li><%= link_to 'About', page_path('about') %></li>
+  <% if user_signed_in? %>
+    <li class="dropdown">
+          <a id="dLabel" role="button" data-toggle="dropdown" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown" data-target="#" href="/page.html">
+            <%= current_user.name %><span class="caret"></span></a>
+          <ul role="menu" class=" dropdown-menu">
+                <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44">
+                    <a href="/settings">Change Site</a></li>
+                <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44">
+                    <%= link_to 'Edit profile', edit_user_registration_path %></li>
+                <li class="divider"></li>
+                <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44">
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          </ul>
+    </li>
+  <% else %>
+    <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+  <% end %>
+</ul>

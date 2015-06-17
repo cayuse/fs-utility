@@ -1,0 +1,51 @@
+
+ ./script/generate scaffold item name:string units:integer issue:string order:integer cost_in_cents:integer price_in_cents:integer start:datetime stop:datetime
+
+
+well, in your view, you'd use this to call a partial:
+the partial will be called _ratefruit.html.erb in your /students folder
+
+
+<% @fruits.each do |f| %>
+<%= render :partial => 'ratefruit', :locals => { :f => f } %>
+<% end %>
+
+
+this will be your partial file, _studentsummer.html.erb or some logical name
+<div id='<%= f.name %>' class='<%= f.good ? 'goodfruit' : 'badfruit'%>'>
+	   <%= f.name %>
+	<% buttonName = f.good ? 'Mark as Bad' : 'Mark as Good'%>
+	  <%= link_to_remote buttonName, :url => { :action => 'update_rating' , :id => f.id } %>
+</div>
+
+
+make a new /views/students/update_rating.rjs phile:
+page.replace_html @fruit.name, :partial => 'ratefruit', :locals => { :f => @fruit }
+
+
+Here is my /fruits controller/org/ update action
+
+def update_rating
+    #    @fruit.good = params[:good] == '1' ? true : false; if @fruit.save
+
+        puts "******** update_rating called"
+        @fruit = Fruit.find(params[:id])
+        if @fruit.toggle!( :good => params[:good] )
+                flash[:notice] = "#{@fruit.name} was successfully re-rated."
+                respond_to do |format|
+                        format.html { redirect_to :action => :rate }
+                        format.js 
+                end
+        else
+                flash[:error] = "Unable to update."
+              render :action => :index
+        end
+end
+
+
+***** rate.com
+
+def rate
+        @fruits = Fruit.all.sort_by{ |f| f.created_at }
+end
+

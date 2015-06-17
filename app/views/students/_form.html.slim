@@ -1,0 +1,38 @@
+=simple_form_for @student, :wrapper => 'bootstrap' do |f|
+  div class='container'
+  
+    div class='row'
+      div class='col-md-3'
+        h4
+          span class='label label-warning' Student Name
+        h5.= f.input :name, :hint => 'Enter the Student Name'
+      div class='col-md-3'
+        h4
+          span class='label label-warning' School
+        h5.= f.input :site_id,:collection => Site.order(:name),:label_method => :name,:value_method => :id,:label => "School" ,:include_blank => false
+  
+    div class='row'
+      div class='col-md-3'
+        h4
+            span class='label label-warning' Student ID Number
+        h5.= f.input :number, :hint => 'Enter the Student ID Number'
+      div class='col-md-3'
+        h4
+            span class='label label-warning' Meal Participation
+        h5.= f.association :meals, :as => :check_boxes
+    div class='row'
+      div class='col-md-3'
+        h4
+          span class='label label-warning' Grade
+        h5.= f.input :grade, collection: Student::GRADES, prompt: "Select Student Grade"
+  
+    div class='row'
+      div class='col-md-3'
+        h4
+          span class='label label-warning' Birthdate
+        - date = @student.birthdate ? @student.birthdate : Date.today
+        h5.=f.text_field :birthdate, :value=>date.strftime("%m/%d/%Y"), :id => "datepicker"
+        
+    div class='row'
+      .actions
+        = f.button :submit, :disable_with => 'Please wait ...', :class => 'btn btn-success'

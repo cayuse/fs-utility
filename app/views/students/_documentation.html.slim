@@ -1,0 +1,4 @@
+div class="clear"
+  -if current_user.administrator?
+    h3.= link_to 'New Document', new_dietdocument_path(:student_id => student.id), {class: "btn btn-default"}
+  =render :partial => 'table', :locals => { :worksheets => student.dietdocuments}

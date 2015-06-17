@@ -1,0 +1,13 @@
+<h1>Listing Weekly Orders</h1>
+
+<table>
+  <tr>
+    <th>&nbsp;</th>
+    <th>For Week Starting</th>
+    <th>Due</th>
+  </tr>
+<% today = Date.today %>
+<% for weeklyorderreq in @weeklyorderreqs %>
+  <%= render :partial => 'order', :locals => {:weeklyorderreq => weeklyorderreq, :today=> today} %>
+<% end %>
+</table>

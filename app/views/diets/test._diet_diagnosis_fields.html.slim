@@ -1,0 +1,4 @@
+.nested-fields.diet-diagnosis
+  #condition_from_list
+    = f.association :condition, :collection => Condition.all, :prompt => 'Choose an existing tag'
+    = link_to_remove_association "remove tag", f

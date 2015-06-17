@@ -1,0 +1,33 @@
+  <% if today > weeklyorderreq.due %>
+    <tr class="cssDue4">
+  <% elsif (today > weeklyorderreq.due - 1.week) %>
+    <tr class="cssNoDay1">
+  <% else %>
+    <tr class="cssDue2">
+  <% end %>
+    <td width=5%>
+      <% a = @weeklydfcorders.find{|t| t.weeklyorderreq == weeklyorderreq} %>
+      <% if today <= weeklyorderreq.due %>
+        <% if a %>
+          <%= link_to weeklyorderreq.week.strftime("Edit Order %W"), edit_weeklydfcorder_path(a) %>
+        <% else %>
+          <%= link_to weeklyorderreq.week.strftime("New Order %W"), :action=>'create', :id=>weeklyorderreq %>
+        <% end %>
+      <% else %>
+        &nbsp;
+      <% end %>
+    </td>
+    <td width=5%><%=h weeklyorderreq.week.strftime("%b %d, %y") %></td>
+    <td width=5%><%=h weeklyorderreq.due.strftime("%b %d, %y") %></td>
+    <td width=5%>
+      <% if a %>
+        <%= link_to 'Report', weeklydfcorder_path(a , :format => :pdf) %>
+        <%#= link_to 'Report', formatted_weeklydfcorder_path(a, :pdf) %>
+      <% else %>
+        &nbsp;
+      <% end %>
+    </td>
+    
+    <td width=5%> &nbsp;<%#= link_to "Click here", :controller => 'reports', 
+         :action => 'site_order', :id => weeklyorderreq, :html=>:get%></td>
+  </tr>

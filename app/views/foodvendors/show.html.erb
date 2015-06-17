@@ -1,0 +1,38 @@
+  <%= image_tag @foodvendor.avatar.url %>
+
+<p>
+  <%=h @foodvendor.name %><br>
+  <%=h @foodvendor.address1 %><br>
+  <% unless @foodvendor.address2 == ""%>
+    <%=h @foodvendor.address2 %><br>
+  <% end %>
+  <%=h @foodvendor.city %>, <%=h @foodvendor.state %>  <%=h @foodvendor.zip %>
+</p>
+<p>
+  <% unless @foodvendor.contact == ""%>
+  <%=h @foodvendor.contact %><br>
+  <% end %>
+
+  <% unless @foodvendor.phone == ""%>
+  PH#: <%=h @foodvendor.phone %><br>
+  <% end %>
+
+  <% unless @foodvendor.fax == ""%>
+  FAX: <%=h @foodvendor.fax %><br>
+  <% end %>
+
+  <% unless @foodvendor.email == ""%>
+  <%=h @foodvendor.email %><br>
+  <% end %>
+</p>
+<br><br><br>
+<% unless @foodvendor.nutritionals.empty? %>
+<%= render :partial=>'nutritionals/table', :locals=>{:nutritionals => @foodvendor.nutritionals} %>
+
+<% end %>
+
+  <% if current_user.administrator? %>
+<h3><%= link_to 'Edit Vendor Information', edit_foodvendor_path(@foodvendor) %> |
+<%= link_to 'Add a new Item', :controller => 'nutritionals', :action => 'new', 'vendor' => @foodvendor.id, :post => true %></h3>
+    <%end%>
+<%= link_to 'Back', foodvendors_path %>

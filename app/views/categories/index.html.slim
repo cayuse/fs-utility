@@ -1,0 +1,17 @@
+h1 Categories
+
+table[with = "100%"]  
+  thead
+    tr
+      th[width = "50%"]
+        Name
+      th
+
+  tbody
+    -@categories.each do |category|
+      tr
+        td.= link_to category.name, edit_category_path(category)
+        td.= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+=link_to 'New Category', new_category_path

@@ -1,0 +1,20 @@
+h1 =@student.name
+p. some student data
+
+table class='zebra-striped'
+  thead
+    tr
+      th Name
+      th Actions
+  tbody
+    - @student.diets.each do |diet|
+      tr
+        td= diet.year.name
+        td
+          = link_to 'Show', diet
+          = '|'
+          = link_to 'Edit', edit_diet_path(diet)
+
+
+- schoolyear = SiteSetting.first.schoolyear
+= link_to 'New Diet', new_diet_path(:schoolyear_id => schoolyear.id, :student_id => @student.id)

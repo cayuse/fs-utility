@@ -1,0 +1,162 @@
+test
+
+#### Important syntatic changes that I need to learn:
+old:
+@monthlyinvreqs = Monthlyinvreq.find_all_by_sitetype_id(@sitetypes, :include => :monthlyinvs, :conditions =>["month = ?", @date])
+new:
+@monthlyinvreqs = Monthlyinvreq.where(sitetype_id: (@sitetypes, :include => :monthlyinvs, :conditions =>["month = ?", @date]))
+
+new:
+@fromcanada = User.find(:all, :conditions => { :country => 'canada' })
+@fromcanada = User.where(:country => 'canada')
+GroupMember.where(:member_id => 4, :group_id => 7).first_or_create
+@monthlyinvs = Monthlyinv.includes(:monthlyinvreq).where(site: @site)
+weeklyorderreqs = Weeklyorderreq.where(sitetype_id: @site.sitetype.id, "week > ?", date)
+@orderreq = Orderreq.where(site_id: @site.id, "week >?, date)
+
+#### How to set up rvm and rails for a clean instance.
+
+rvm use ruby-2.1.2@fs-utility --ruby-version --create
+gem install rails
+rails new . -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb
+
+#### Pundit
+https://github.com/elabs/pundit
+
+#### RVM Notes
+To do the second you can just add to ~/.bashrc:
+
+if test -f ~/.rvm/scripts/rvm; then
+    [ "$(type -t rvm)" = "function" ] || source ~/.rvm/scripts/rvm
+fi
+
+
+
+########### Simple Form
+
+===============================================================================
+
+  Be sure to have a copy of the Bootstrap stylesheet available on your
+  application, you can get it on http://twitter.github.com/bootstrap.
+
+  Inside your views, use the 'simple_form_for' with one of the Bootstrap form
+  classes, '.form-horizontal', '.form-inline', '.form-search' or
+  '.form-vertical', as the following:
+
+    = simple_form_for(@user, html: {class: 'form-horizontal' }) do |form|
+
+===============================================================================
+https://github.com/plataformatec/simple_form
+
+###################### Cocoon
+https://github.com/nathanvda/cocoon
+
+In our projects/_form partial we'd write:
+
+= simple_form_for @project do |f|
+  = f.input :name
+  = f.input :description
+  %h3 Tasks
+  #tasks
+    = f.simple_fields_for :tasks do |task|
+      = render 'task_fields', :f => task
+    .links
+      = link_to_add_association 'add task', f, :tasks
+  = f.submit
+In our _task_fields partial we write:
+
+.nested-fields
+  = f.input :description
+  = f.input :done, :as => :boolean
+  = link_to_remove_association "remove task", f
+
+#################### turbolinks
+https://github.com/rails/turbolinks/#events
+
+############## SLIM
+
+http://rdoc.info/gems/slim/frames
+
+########### thinking sphinx
+rake ts:index
+rake ts:rebuild
+rake ts:start|stop|restart etc
+
+rake ts:stop
+RAILS_ENV='production' rake ts:rebuild
+RAILS_ENV='production' rake ts:index
+RAILS_ENV='production' rake ts:restart
+
+RAILS_ENV='production' rake ts:stop
+RAILS_ENV='production' rake ts:rebuild
+RAILS_ENV='production' rake ts:index
+RAILS_ENV='production' rake ts:start
+http://auhsd-lightspeed10gb/access/web/change_user
+############# bootstrap pagination
+https://github.com/bootstrap-ruby/will_paginate-bootstrap
+
+#### Ruby/Rails
+
+ruby-2.1.2
+Rails 4.1.1
+
+
+####  Rake stuff
+rake assets:clean assets:precompile
+rake assets:clobber assets:precompile
+rake assets
+######## rjs replace html ajax
+https://coderwall.com/p/kqb3xq
+
+
+
+#######  Fixing the images etc
+they need to go  in /home/shared/fs-utility/public/system/<classname>/<avatars>/000/000/<object_id>
+
+#inside the folder
+folders = Dir.entries "."
+folders.each do |fold|
+  a = ("%03d" % fold.to_i)
+  system "mv #{fold} #{a}"
+end
+
+
+############## Theme info
+http://bootswatch.com/cerulean/#
+
+
+################ Users conversion
+INSERT INTO users
+SELECT
+id, email, password, password, password_changed_at, password_changed_at, 0,
+password_changed_at, password_changed_at, '', '', password_changed_at, password_changed_at, name, fullname
+FROM goldberg_users;
+
+#### Multi-level menus
+
+
+<li>
+            <a id="dLabel" role="button" data-toggle="dropdown" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-38 dropdown" data-target="#" href="/page.html">
+                Admin <span class="caret"></span>
+            </a>
+    		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+              <li><a href="#">Some action</a></li>
+              <li><a href="#">Some other action</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">Hover me for more options</a>
+                <ul class="dropdown-menu">
+                  <li><a tabindex="-1" href="#">Second level</a></li>
+                  <li class="dropdown-submenu">
+                    <a href="#">Even More..</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">3rd level</a></li>
+                    	<li><a href="#">3rd level</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Second level</a></li>
+                  <li><a href="#">Second level</a></li>
+                </ul>
+              </li>
+            </ul>
+</li>

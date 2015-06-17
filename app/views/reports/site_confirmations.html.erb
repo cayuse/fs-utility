@@ -1,0 +1,27 @@
+<h1>Listing Weekly Order Requests</h1>
+<% row_class = cycle("cssAlternating1", "cssAlternating2") %>
+
+<table width=100%>
+  <tr>
+    <th width="10%">Week of:</th>
+    <% for sitetype in @sitetypes %>
+      <th width="10%"><%= sitetype.name %> </th>
+    <% end %>
+    <th width="10%">Separate&nbsp;By&nbsp;day</th>
+    <th width="10%">Combined Totals</th>
+  </tr>
+  <% for group in @groups.keys.sort %>
+    <% cur_class = "#{row_class}" %>
+    <tr class="<%= cur_class %>";
+            onmouseover="ChangeColor(this, 1);" 
+            onmouseout="ChangeColor(this, <%= cur_class == "cssAlternating1" ? 4 : 5 %>);" 
+            >
+      <td><%=group.strftime("%b %d, %Y")%></td>
+      <% for sitetype in @sitetypes %>
+        <td><%= h @groups[group].member?(sitetype.id) ? "yes" : "no" %> </td>
+      <% end %>
+      <td><%= link_to 'Separate', :controller=>'reports', :action=>'separate_by_day',  :id=> group, :format=>:pdf %></td>
+      <td><%= link_to 'Combined', :controller=>'reports', :action=>'combined_totals',  :id=> group, :format=>:pdf %></td>
+    </tr>
+  <% end %>
+</table>

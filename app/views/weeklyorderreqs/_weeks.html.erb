@@ -1,0 +1,22 @@
+<% for week in weeks %>
+  <div>
+    <h3><a href="#"><%= week.strftime("%b %d, %y") -%></a></h3>
+      <div>
+        <%= form_tag :controller => :weeklyorderreqs, :action => :reports, :format => :pdf do %>
+          <%= render :partial=>'table', :locals => { :week => week, :sitetypes => sitetypes, :weeklyorderreqs => weeklyorderreqs} %>
+          <br />
+          <br />
+          <%= hidden_field :week, :week, :value=>week %>
+          <% Orderitem::QTYS.each_with_index do |q,i| %>
+            &nbsp;&nbsp;<%=h q %>:
+            <%= check_box_tag("days[]", i, true, :class=>'day')%>
+          <% end %><br /><br />
+          <%= submit_tag "Separate By Day", :name => "submit" %>
+          <%= submit_tag "Combined Totals", :name => "submit" %>
+          <%= submit_tag "Separate With Site Breakdown", :name => "submit" %>
+          <%= submit_tag "Invoices", :name => "submit" %>
+          <%= submit_tag "Weekly Site Confirmations", :name => "submit" %>
+        <% end %>
+      </div>
+  </div>
+<% end %>  

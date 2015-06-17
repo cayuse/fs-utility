@@ -1,0 +1,19 @@
+<h1>Listing tracks</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Code</th>
+  </tr>
+
+<% for track in @tracks %>
+  <tr>
+    <td width=40%><%=link_to track.name, edit_track_path(track) %></td>
+    <td width=40%><%=h track.code %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New track', new_track_path %>

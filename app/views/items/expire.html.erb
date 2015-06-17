@@ -1,0 +1,27 @@
+<h1> Orders for "<%= @item.name %>" exist after selected expiration date of <%=h @expire.strftime("%b %d, %Y") %> </h1>
+<h2> Please review these orders, and select delete or cancel this action </h2>
+
+<table width="50%" border="1" cellpadding="0" cellspacing="0">
+  <tr>
+    <th width="10%">Site</th>
+    <th width="10%">Week Starting</th>
+    <th width="10%">Mon Qty</th>
+    <th width="10%">Tue Qty</th>
+    <th width="10%">Wed Qty</th>
+    <th width="10%">Thu Qty</th>
+    <th width="10%">Fri Qty</th>
+  </tr>
+  <% for orderitem in @orderitems%>
+    <tr>
+      <td><%= h orderitem.weeklydfcorder.site.name %> </td>
+      <td><%= h orderitem.weeklydfcorder.weeklyorderreq.week %> </td>
+      <td><%= h orderitem.monqty %></td>
+      <td><%= h orderitem.tueqty %></td>
+      <td><%= h orderitem.wedqty %></td>
+      <td><%= h orderitem.thuqty %></td>
+      <td><%= h orderitem.friqty %></td>
+    </tr>
+  <% end %>
+</table>
+
+

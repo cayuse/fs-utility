@@ -1,0 +1,109 @@
+div class='container'
+
+  div class='row'
+    div class='col-md-3'
+      h4
+        span class='label label-warning' Student Name
+      h5.= @student.name
+    div class='col-md-3'
+      h4
+        span class='label label-warning' School
+      h5.= @student.site.name
+    div class='col-md-3'
+      h4
+        span class='label label-success' School Manager
+      h5.= @student.site.user.fullname
+    div class='col-md-3'
+      h4
+        span class='label label-primary' School Nurse
+      h5.= @student.site.nurse_name
+
+  div class='row'
+    div class='col-md-3'
+      h4
+          span class='label label-warning' Student ID Number
+      h5.= @student.number
+    div class='col-md-3'
+      h4
+        span class='label label-warning' School Manager
+      h5.= @student.site.user.name
+    div class='col-md-3'
+      h4
+        span class='label label-success' Manager E-Mail
+      h5.= @student.site.user.email
+    div class='col-md-3'
+      h4
+        span class='label label-primary' Nurse E-Mail
+      h5.= @student.site.nurse_email
+
+  div class='row'
+    div class='col-md-3'
+      h4
+        -Meal.all.each do |meal|
+          span class='label #{@student.meals.include?(meal) ? "label-success" : "label-default"}' #{meal.name}
+    div class='col-md-3'
+      h4
+        span class='label label-warning' School Manager
+      h5.= @student.site.user.name
+    div class='col-md-3'
+      h4
+        span class='label label-success' Manager Phone
+      h5.= number_to_phone(@student.site.phone, :area_code => true)
+    div class='col-md-3'
+      h4
+        span class='label label-primary' Nurse Phone
+      h5.= number_to_phone(@student.site.nurse_phone, :area_code => true)
+
+  div class='row'
+    div class='col-md-3'
+      h4
+        span class='label label-warning' Birthdate
+      h5.= @student.birthdate ? @student.birthdate.strftime("%b %d, %Y") : nil
+    div class='col-md-3'
+      h4
+        span class='label label-warning' School Manager
+      h5.= @student.site.user.name
+      
+  div class='row'
+    div class='col-md-3'
+      h4
+        - label = (@student.priority ? "danger" : "default")
+        span class='label label-#{label}' Priority
+    div class='col-md-3'
+
+    div class='col-md-3'
+        h5.=link_to "Edit Student", edit_student_path(@student), {class: "btn btn-default"}
+ 
+ 
+div id="tabs"
+  ul
+    li
+      a href="#tabs-1" Diagnosis
+    li
+      a href="#tabs-2" Documentation
+    li
+      a href="#tabs-3" Restrictions
+    li
+      a href="#tabs-4" Products NO
+    li
+      a href="#tabs-5" Products YES
+    li
+      a href="#tabs-6" Notes
+    li
+      a href="#tabs-7" Student History
+      
+    
+  div id="tabs-1"
+    =render :partial => 'diagnosis', :locals => {:student => @student}
+  div id="tabs-2"
+    =render :partial => 'documentation', :locals => {:student => @student}
+  div id="tabs-3"
+    =render :partial => 'restrictions', :locals => {:student => @student}
+  div id="tabs-4"
+    =render :partial => 'products_no', :locals => {:student => @student}
+  div id="tabs-5"
+    =render :partial => 'products_yes', :locals => {:student => @student}
+  div id="tabs-6"
+    =render :partial => 'notes', :locals => {:student => @student}
+  div id="tabs-7"
+    =render :partial => 'history', :locals => {:student => @student}

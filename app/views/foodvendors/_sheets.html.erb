@@ -1,0 +1,34 @@
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="table-2">
+  <thead>
+    <tr>
+      <th class="GradeA">Company</th>
+      <th class="GradeA">Name</th>
+      <th class="GradeA">Code</th>
+      <th class="GradeA">Servings</th>
+      <th class="GradeA">Factor</th>
+      <th class="GradeA">Meal Equiv</th>
+      <th class="GradeA">File</th>
+      <th style="display:none;"></th>
+      <% if current_user.administrator? %>
+      <th class="GradeA">Edit</th>
+      <th class="GradeA">DELETE?</th>
+      <% end %>
+    </tr>
+  </thead>
+  <% nutritionals.each do |nutritional| %>
+  <tr>
+    <td><%=h nutritional.foodvendor.name %></th>
+    <td><%=h nutritional.name %></td>
+    <td><%=h nutritional.codenum %></td>
+    <td><%=h nutritional.servings %></td>
+    <td><%=h nutritional.factor %></td>
+    <td><%=h nutritional.mealequiv %></td>
+    <td style="display:none;"><%= nutritional.search %></td>
+    <td><%= link_to "View Document", nutritional.attachment.url %>
+    <% if current_user.administrator? %>
+    <td><%= link_to 'Edit', edit_nutritional_path(nutritional) %></td>
+    <td><%= link_to 'Destroy', { :controller => 'nutritionals', :action => 'destroy', :id => nutritional }, :confirm => 'Are you sure?', :method => 'delete' %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>

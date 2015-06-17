@@ -1,0 +1,13 @@
+.nested-fields
+  |<br>
+  table
+    tr
+      td
+        = f.association :condition, :collection => Condition.all, :prompt => 'Choose an existing Condition'
+      td
+        |&nbsp;
+      td
+        = f.association :category, :collection => Category.all, :prompt => 'Choose an existing Category'
+  = link_to_remove_association "remove tag", f, :class => 'btn btn-danger btn-xs'
+  |<br>
+  |<br>

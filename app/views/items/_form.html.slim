@@ -1,0 +1,62 @@
+= simple_form_for @item, :wrapper => 'bootstrap' do |f|
+  table
+    td width="40%" 
+      p
+        |Name
+        br
+        = f.text_field :name
+      p
+        |Units Per
+        br
+        = f.text_field :units
+      p
+        |Unit of issue
+        br
+        = f.text_field :issue
+      = f.fields_for :price do |ff|
+        p
+          h2 Pricing Information
+          br
+        p
+          |Cost:
+          br
+          = ff.text_field :cost
+        p
+          |Price:
+          br
+          = ff.text_field :price
+        p
+          New Fair Market Value:
+          br
+          = ff.text_field :fmv
+        p
+          |Effective date:
+          br
+          = ff.text_field :start, :id => "datepicker"
+    td width="30%"
+      p
+        |Available To Sites by Type:
+        -for sitetype in Sitetype.all
+          div
+          = check_box_tag "item[sitetype_ids][]", sitetype.id, @item.sitetypes.include?(sitetype)
+          = sitetype.name
+      br
+      p
+        |Select days item is available (Only required for DFC Order Items)
+      p
+        |Mon:
+        = f.check_box :mon
+        |Tue:
+        = f.check_box :tue
+        |Wed:
+        = f.check_box :wed
+        |Thu:
+        = f.check_box :thu
+        |Fri:
+        = f.check_box :fri
+      p
+        = f.association :itemtype, :collection => Itemtype.all, :prompt => 'Choose Item Type'
+      p
+        br
+        .actions
+          = f.button :submit, :disable_with => 'Please wait ...', :class => 'btn btn-success'

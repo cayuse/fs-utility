@@ -1,0 +1,16 @@
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="table-1">
+  <thead>
+    <tr>
+      <th>Logo</th>
+      <th>Name</th>
+      <th>Sheets</th>
+    </tr>
+  </thead>
+<% foodvendors.each do |foodvendor| %>
+  <tr class="GradeB">
+    <td><%= link_to image_tag(foodvendor.avatar.url(:thumb)), foodvendor  %></td>
+    <td><%=h foodvendor.name %></td>
+    <td><%=h foodvendor.nutritionals.length.to_s %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,5 @@
+ id |        email         |                      encrypted_password                      | reset_password_token | reset_password_sent_at | remember_created_at | sign_in_count |     current_sign_in_at     |      last_sign_in_at       | current_sign_in_ip | last_sign_in_ip |         created_at         |         updated_at         |  name  |    fullname     
+----+----------------------+--------------------------------------------------------------+----------------------+------------------------+---------------------+---------------+----------------------------+----------------------------+--------------------+-----------------+----------------------------+----------------------------+--------+-----------------
+  3 | henderson_d@auhsd.us | $2a$10$NDvpx9tcLGjOYdgobyc.IeQyna0nWAqEEl3uxgp0eb7C8JIjHeO4u |                      |                        |                     |             6 | 2014-06-25 17:16:53.609342 | 2014-06-25 16:56:26.979378 | 172.16.4.183       | 172.16.4.183    | 2014-06-25 15:12:05.244855 | 2014-06-25 17:16:53.610626 | cayuse | David Henderson
+(1 row)
+

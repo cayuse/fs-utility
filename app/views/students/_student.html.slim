@@ -1,0 +1,11 @@
+- hasDiet = student.diets.where(schoolyear: year).first
+tr 
+  td.=h hasDiet ? "Yes" : "No"
+  td.=h student.number
+  td.=h link_to student.name, student_path(student)
+  td.=h student.birthdate
+  td.=h student.grade
+  td.=h student.site.name
+  td.=h hasDiet ? (link_to 'Edit Diet', edit_diet_path(hasDiet)) : (link_to 'New Diet', new_diet_path(:schoolyear_id => year.id, :student_id => student.id))
+  td.=h link_to "Edit", edit_student_path(student)
+

@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th width="3%" >Sel</th>
+    <th width="10%">Sitetype</th>
+    <th width="5%">Week</th>
+    <th width="5%">Due</th>
+    <th width="5%">Finalized</th>
+    <th width="5%">&nbsp;</th>
+  </tr>
+  <% for type in sitetypes %>
+    <% weeklyorderreq = weeklyorderreqs[type].find{|t| t.week == week} || nil %>
+    <% if !!weeklyorderreq %>
+      <tr>
+        <td> <%= check_box_tag("sitetypes[]", type.id, true, :class=>'sitetype') %> </td>
+        <td><%=link_to weeklyorderreq.sitetype.name, weeklyorderreq %></td>
+        <td><%=h weeklyorderreq.week %></td>
+        <td><%=h weeklyorderreq.due %></td>
+        <td><%=h weeklyorderreq.finalized %></td>
+        <td><%= link_to 'Edit', edit_weeklyorderreq_path(weeklyorderreq) %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

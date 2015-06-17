@@ -1,0 +1,27 @@
+<h1>Listing sitetypes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Mon:</th>
+    <th>Tue:</th>
+    <th>Wed:</th>
+    <th>Thu:</th>
+    <th>Fri:</th>
+  </tr>
+  
+<% for sitetype in @sitetypes %>
+  <tr>
+    <td width=25%><%=link_to sitetype.name, edit_sitetype_path(sitetype) %></td>
+    <td width=10%><%= check_box_tag :week, :mon, sitetype.mon, :disabled=>true %></td>
+    <td width=10%><%= check_box_tag :week, :tue, sitetype.tue, :disabled=>true %></td>
+    <td width=10%><%= check_box_tag :week, :wed, sitetype.wed, :disabled=>true %></td>
+    <td width=10%><%= check_box_tag :week, :thu, sitetype.thu, :disabled=>true %></td>
+    <td width=10%><%= check_box_tag :week, :fri, sitetype.fri, :disabled=>true %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New sitetype', new_sitetype_path %>

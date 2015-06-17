@@ -1,0 +1,29 @@
+<h1>Editing Item</h1>
+
+<%= form_for @worksheet, :html => { :multipart => true } do |f| %>
+  
+  <p>
+    Name<br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    Description<br />
+    <%= f.text_field :description %>
+  </p>
+
+<br >
+
+  <p>
+    <%= link_to "View Existing Document: #{@worksheet.sheet_file_name}", @worksheet.sheet.url %>
+  </p>
+  <p>
+    Use the following if you want to replace the worksheet:<br />
+    <%= f.file_field :sheet %>
+  </p>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+<br>
+<%= link_to 'Back', worksheets_path %>

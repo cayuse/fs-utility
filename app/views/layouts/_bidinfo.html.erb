@@ -1,0 +1,20 @@
+<li id="menu-item-38" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-38 dropdown"><a title="Documents" href="#" data-toggle="dropdown" class="dropdown-toggle">Bid Information <span class="caret"></span></a>
+<ul role="menu" class=" dropdown-menu">
+    <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44">
+        <a title="Bid Names" href="/bidnames">Bid Names </a></li>
+    <li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44">
+        <a title="Bid Companies" href="/companies">Bid Companies </a></li>
+<% if canView[:bidInfo][:admin] %>
+    <li class="divider"></li>
+    <li id="menu-item-43"   class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-43 dropdown-submenu">
+          <a title="Page A" href="#" data-toggle="dropdown" class="dropdown-toggle">Setup </a>
+        <ul role="menu" class=" dropdown-menu">
+            <li id="menu-item-1700" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1700">
+                <a title="New Bid Name" href="/bidname/new">New Bid Name </a></li>
+            <li id="menu-item-1700" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1700">
+                <a title="New Company" href="/companies/new">New Company </a></li>
+        </ul>
+    </li>
+<% end %>
+</ul>
+</li>

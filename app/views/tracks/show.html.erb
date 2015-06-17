@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @track.name %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%=h @track.code %>
+</p>
+
+
+<%= link_to 'Edit', edit_track_path(@track) %> |
+<%= link_to 'Back', tracks_path %>

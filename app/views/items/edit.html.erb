@@ -1,0 +1,24 @@
+<%=
+  link_to "<< previous", {:controller => 'items', :id => @item.previous.id,
+    :action => 'edit'} if @item.previous
+%>&nbsp;&nbsp;&nbsp;<%=
+  link_to "next >>", {:controller => 'items',
+    :id => @item.next.id, :action => 'edit'} if @item.next
+%>
+
+<div class="clear">
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Allergens</a></li>
+    <li><a href="#tabs-2">Basic</a></li>
+  </ul>
+  <div id="tabs-1">
+    <%= render :partial => 'allergens', :locals => { :item => @item} %>
+  </div>
+  <div id="tabs-2">
+    <%= render :partial => 'basic', :locals => { :item => @item, :page => @page} %>
+  </div>
+<br><br>
+</div>
+</div>
+<%= link_to 'Show', @item %>

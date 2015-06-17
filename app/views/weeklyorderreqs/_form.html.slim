@@ -1,0 +1,21 @@
+p Order Due
+= text_field 'weeklyorderreq', 'due', :value=>date.strftime("%m/%d/%Y"), :id => "datepicker"
+p Order days This Week.
+table width="50%"
+  tr
+    th[width=10]Mon: #{date}
+    th[width=10]Tue: #{date + 1.day}
+    th[width=10]Wed: #{date + 2.days}
+    th[width=10]Thu: #{date + 3.days}
+    th[width=10]Fri: #{date + 4.days}
+  tr
+    td[align="center"]#{f.check_box :mon, :checked=>sitetype.mon}
+    td[align="center"]#{f.check_box :tue, :checked=>sitetype.tue}
+    td[align="center"]#{f.check_box :wed, :checked=>sitetype.wed}
+    td[align="center"]#{f.check_box :thu, :checked=>sitetype.thu}
+    td[align="center"]#{f.check_box :fri, :checked=>sitetype.fri}
+= hidden_field :weeklyorderreq, :sitetype_id, :value=>sitetype.id
+= hidden_field :weeklyorderreq, :week, :value=>date.strftime("%m/%d/%Y")
+= hidden_field :weeklyorderreq, :finalized, :value=>false
+
+

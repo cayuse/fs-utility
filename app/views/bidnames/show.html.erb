@@ -1,0 +1,54 @@
+<p>
+  <h1><%=h @bidname.name %> Bid, Listing Companies</h1>
+</p>
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="table-1">
+  <thead>
+  <tr>
+    <% if current_user.bid_admin? %>
+    <th>Click To Remove</th>
+    <% end %>
+    <th class="sort1">Name</th>
+    <th>Contact</th>
+    <th>Address1</th>
+    <th>Address2</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Phone-1</th>
+    <th>Phone-2</th>
+    <th>Fax</th>
+    <th>Email</th>
+  </tr>
+  </thead>
+<% if @bidname.companies.length > 0 %>
+<% @bidname.companybidnames.each do |cbn| %>
+<% company = cbn.company %>
+  <tr class="gradeA">
+    <% if current_user.bid_admin? %>
+    <td><%#= link_to 'Remove', {:action => 'drop_company', :id => cbn},
+    :confirm => 'Are you sure?', :method => 'post' %></td>
+    <% end %>
+    <td><%=h link_to company.name, edit_company_path(company)%></td>
+    <td><%=h company.contact %></td>
+    <td><%=h company.addr1 %></td>
+    <td><%=h company.addr2 %></td>
+    <td><%=h company.city %></td>
+    <td><%=h company.st %></td>
+    <td><%=h company.zip %></td>
+    <td><%=h company.phone1 %></td>
+    <td><%=h company.phone2 %></td>
+    <td><%=h company.fax %></td>
+    <td><%=h company.email %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>
+<br><br>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#table-1').dataTable({
+      "bPaginate": false,
+      "sDom": ''
+      });
+} );
+</script>

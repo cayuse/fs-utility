@@ -1,0 +1,11 @@
+<h1>Listing Monthly Inventory Requests</h1>
+
+<br />
+<div id="accordion">
+<%= render :partial => 'months', :locals => { :months => @months, :sitetypes => @sitetypes, :monthlyinvreqs => @monthlyinvreqs} %>
+</div>
+
+<%= will_paginate @months, renderer: BootstrapPagination::Rails %>
+<br />
+
+<%= link_to 'Start New Inventory Request', "monthlyinvreqs/start" %>

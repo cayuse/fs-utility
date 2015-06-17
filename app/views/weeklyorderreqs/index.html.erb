@@ -1,0 +1,28 @@
+<h1>Listing Weekly Order Requests</h1>
+
+<%= will_paginate @weeks, renderer: BootstrapPagination::Rails %>
+
+<br />
+<div id="accordion">
+<%= render :partial => 'weeks', :locals => { :weeks => @weeks, :sitetypes => @sitetypes, :weeklyorderreqs => @weeklyorderreqs} %>
+</div>
+
+<br />
+
+<%= link_to 'Start New Order Request', "weeklyorderreqs/start" %>
+<br><br>
+
+<p>
+  The Following Convenience Buttons will start a request one week after the last week in the system.<br>
+  If you need to fill in a missing week or skip a week use the above link.
+</P>
+
+<% for sitetype in Sitetype.all_with_days %>
+  <%= form_tag :controller=>'weeklyorderreqs', :action=>'new' do -%>
+      <%= hidden_field :weeklyorderreq, :sitetype_id, :value=>sitetype.id %>
+      <% aDate = Weeklyorderreq.where(sitetype_id: sitetype.id).order(week: :desc).first.week + 1.week %>
+      <%= hidden_field :weeklyorderreq, :week, :value=> aDate.strftime("%m/%d/%Y")  %>
+      <p><%= submit_tag "Next #{sitetype.name}" %> </p>
+  <% end %>
+<% end %>
+

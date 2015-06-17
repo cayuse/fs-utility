@@ -1,0 +1,20 @@
+<p>
+  <b>Name:</b>
+  <%=h @item.name %>
+</p>
+
+<p>
+  <b>Units:</b>
+  <%=h @item.units %>
+</p>
+
+<p>
+  <b>Issue:</b>
+  <%=h @item.issue %>
+</p>
+
+<p> 
+
+<%= render :partial=>'pricehistory', :locals=>{:item => @item} %>
+
+<%= link_to 'Edit', edit_item_path(@item) %>

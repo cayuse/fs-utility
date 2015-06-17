@@ -1,0 +1,21 @@
+<h1>Listing track_calendars</h1>
+
+<table>
+  <tr>
+    <th>Track</th>
+    <th>Start</th>
+  </tr>
+
+<% for track_calendar in @track_calendars %>
+  <tr>
+    <td><%=h track_calendar.track.name %></td>
+    <td><%=h track_calendar.start %></td>
+    <td><%= link_to 'Edit', edit_track_calendar_path(track_calendar) %></td>
+    <td><%= link_to 'Destroy', track_calendar, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New track_calendar', new_track_calendar_path %>

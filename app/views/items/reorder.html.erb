@@ -1,0 +1,38 @@
+<%= javascript_include_tag 'jquery.tablednd' %>
+ <% form_tag :controller => :items, :action => :update_order do %>
+  <br>
+    <h1> Reorder Items </h1>
+  <table id="table-1" style= background-color: #777; height: 20px;" border="1" cellpadding="2" cellspacing="1">
+    <tr class="nodrop nodrag">
+        <th width="20%">Description</th>
+        <th width="10%">Units</th>
+        <th width="10%">Issue</th>
+        <th width="10%">Cost</th>
+        <th width="10%">Price</th>
+        <th width="10%">Expired</th>
+      </tr>
+      <% @items.each do |item| %>
+      <% bgcolor = item.expired? ? "f87372" : (item.itemtype.colorcode || "FFFFFF") %>
+      <tr bgcolor="#<%= bgcolor %>">
+        <%= hidden_field_tag("index[]", item.id.to_i, :class=>'song') -%>
+        <td><%= item.name %></td>
+        <td><%= item.units %></td>
+        <td><%= item.issue %></td>
+        <td><%= number_to_currency(item.current_price.cost) %></td>
+        <td><%= number_to_currency(item.current_price.price) %></td>
+        <th><%= item.expired? ? "Expired" : "&nbsp;" %></td>
+      </tr>
+      <% end %>
+    </table>
+  
+  <%= submit_tag "Set Order", :name => "submit" %>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      // Initialise the table
+      $("#table-1").tableDnD({
+        onDragClass: "cssNoDay1"
+      });
+  });
+  </script>

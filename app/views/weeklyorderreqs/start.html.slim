@@ -1,0 +1,12 @@
+h1 Select Site Type and Weekday
+div id="rest_of_form"
+  = form_tag :controller=>'weeklyorderreqs', :action=>'new' do
+
+    p Sitetype:
+    = collection_select :weeklyorderreq, :sitetype_id, Sitetype.all_with_days, :id, :name
+    
+    p Weekday:
+    =text_field 'weeklyorderreq', 'week', :id => "datepicker"
+    p.=submit_tag "Continue"
+
+= link_to 'Back', weeklyorderreqs_path

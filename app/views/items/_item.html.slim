@@ -1,0 +1,42 @@
+br
+= link_to 'Edit', {:controller => 'items', :id => item, :action => 'edit', :page => page}
+div class="collapsible-not" id="close" #{item.name} <span></span>
+div class="container"
+  div class="content"
+    table[style="text-align: center; background-color: #777; height: 20px;" border="1" cellpadding="2" cellspacing="1"]
+      tbody
+        tr
+          th[width="10%" class="cssTitle6"]Units
+          th[width="10%" class="cssTitle6"]Issue
+          th[width="10%" class="cssTitle6"]Cost
+          th[width="10%" class="cssTitle6"]Price
+          th[width="10%" class="cssTitle6"]FMV
+          th[width="15%" class="cssTitle6"]Start Date
+          th[width="15%" class="cssTitle6"]Expire Date
+        tr
+          td[class="cssWeeks1"]#{ item.units}
+          td[class="cssWeeks1"]#{ item.issue}
+          td[class="cssWeeks1"]#{ number_to_currency(item.current_price.cost)}
+          td[class="cssWeeks1"]#{ number_to_currency(item.current_price.price)}
+          td[class="cssWeeks1"]#{ number_to_currency(item.current_price.fmv)}
+          td[class="cssWeeks1"]#{ item.current_price.start}
+          td[class="cssNoDay1"]#{ item.current_price.expire}
+          -if item.prices.count > 1
+            tr
+              td[colspan="7" class="cssHeading1"]Price History
+            -for price in item.prices
+              -if price != item.current_price
+                tr
+                  td[class="cssToday1"]#{"&nbsp;"}
+                  td[class="cssToday1"]#{"&nbsp;"}
+                  td[class="cssNoDay1"]#{ number_to_currency(price.cost) }
+                  td[class="cssNoDay1"]#{ number_to_currency(price.price) }
+                  td[class="cssNoDay1"]#{ number_to_currency(price.fmv) }
+                  td[class="cssNoDay1"]#{ price.start }
+                  td[class="cssNoDay1"]#{ price.expire }
+          tr
+            -if item.itemtype
+              td[colspan=7 class="cssToday1"] #{item.itemtype.name }
+            -else
+              td[colspan=7 class="cssNoDay1"] #{"&nbsp;"}
+

@@ -1,0 +1,16 @@
+<h1>Editing bidname</h1>
+
+<%= form_for(@bidname) do |f| %>
+  
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @bidname %> |
+<%= link_to 'Back', bidnames_path %>

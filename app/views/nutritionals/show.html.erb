@@ -1,0 +1,26 @@
+<p>
+  <b>Category:</b>
+  <%=h @nutritional.category %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @nutritional.name %>
+</p>
+
+<p>
+  <b>Codenum:</b>
+  <%=h @nutritional.codenum %>
+</p>
+
+<p>
+  <b>Search:</b>
+  <%=h @nutritional.search %>
+</p>
+  <p><%= link_to "get document", @nutritional.attachment.url %></p>
+
+  <%= image_tag @nutritional.attachment.url %>
+
+
+<%= link_to 'Edit', edit_nutritional_path(@nutritional) %> |
+<%= link_to 'Back', nutritionals_path %>

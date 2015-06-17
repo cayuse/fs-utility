@@ -1,0 +1,24 @@
+<h1>Listing monthlyinvitems</h1>
+
+<table>
+  <tr>
+    <th>Monthlyinv</th>
+    <th>Item</th>
+    <th>Qty</th>
+  </tr>
+
+<% for monthlyinvitem in @monthlyinvitems %>
+  <tr>
+    <td><%=h monthlyinvitem.monthlyinv %></td>
+    <td><%=h monthlyinvitem.item %></td>
+    <td><%=h monthlyinvitem.qty %></td>
+    <td><%= link_to 'Show', monthlyinvitem %></td>
+    <td><%= link_to 'Edit', edit_monthlyinvitem_path(monthlyinvitem) %></td>
+    <td><%= link_to 'Destroy', monthlyinvitem, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New monthlyinvitem', new_monthlyinvitem_path %>

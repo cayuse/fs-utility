@@ -1,0 +1,6 @@
+= simple_form_for @condition, :wrapper => 'bootstrap' do |f|
+  = f.input :name, :hint => 'The title of your project'
+  = f.association :categories, :as => :check_boxes
+
+  .actions
+    = f.button :submit, :disable_with => 'Please wait ...'

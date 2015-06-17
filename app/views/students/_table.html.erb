@@ -1,0 +1,28 @@
+<table cellpadding="0" cellspacing="0" border="0" class='table table-striped table-hover'>
+  <thead>
+    <tr>
+      <th class="GradeA">Name</th>
+      <th class="GradeA">Description</th>
+      <th class="GradeA">File Name</th>
+      <th class="GradeA">File</th>
+      <th class="GradeA">Last Updated</th>
+      <% if current_user.administrator? %>
+      <th class="GradeA">Edit</th>
+      <th class="GradeA">DELETE?</th>
+      <% end %>
+    </tr>
+  </thead>
+  <% worksheets.each do |worksheet| %>
+  <tr>
+    <td><%=h worksheet.name %></th>
+    <td><%=h worksheet.description %></td>
+    <td><%=h worksheet.dietscan_file_name %></td>
+    <td><%= link_to "Get File", worksheet.dietscan.url %></td>
+    <td><%= worksheet.dietscan_updated_at.in_time_zone("Pacific Time (US & Canada)")%></td>
+    <% if current_user.administrator? %>
+    <td><%= link_to 'Edit', edit_dietdocument_path(worksheet) %></td>
+    <td><%= link_to 'Destroy', { :controller => 'dietdocuments', :action => 'destroy', :id => worksheet }, :confirm => 'Are you sure?', :method => 'delete' %></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>

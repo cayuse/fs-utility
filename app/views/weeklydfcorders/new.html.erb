@@ -1,0 +1,43 @@
+<h1>New weeklydfcorder</h1>
+
+<%= form_for(@weeklydfcorder) do |f| %>
+  
+
+  <p>
+    <%= f.label :weeklyorderreq %><br />
+    <%= f.text_field :weeklyorderreq %>
+  </p>
+  <p>
+    <%= f.label :site %><br />
+    <%= f.text_field :site %>
+  </p>
+  <p>
+    <%= f.label :item %><br />
+    <%= f.text_field :item %>
+  </p>
+  <p>
+    <%= f.label :monqty %><br />
+    <%= f.text_field :monqty %>
+  </p>
+  <p>
+    <%= f.label :tueqty %><br />
+    <%= f.text_field :tueqty %>
+  </p>
+  <p>
+    <%= f.label :wedqty %><br />
+    <%= f.text_field :wedqty %>
+  </p>
+  <p>
+    <%= f.label :thuqty %><br />
+    <%= f.text_field :thuqty %>
+  </p>
+  <p>
+    <%= f.label :friqty %><br />
+    <%= f.text_field :friqty %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', weeklydfcorders_path %>

@@ -1,0 +1,18 @@
+<%= simple_form_for @dietdocument, :html => { :multipart => true } do |f| %>
+
+  <%= f.input :student_id, :as => :hidden, :input_html => { :value => @dietdocument.student_id } %>
+  <p>
+    Name<br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    Description<br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.file_field :dietscan %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>

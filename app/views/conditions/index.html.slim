@@ -1,0 +1,16 @@
+h1 Conditions
+
+table
+  thead
+    tr
+      th.Name
+      th
+
+  tbody
+    -@conditions.each do |condition|
+      tr
+        td.= link_to condition.name, edit_condition_path(condition)
+        td.= link_to 'Destroy', condition, method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+= link_to 'New Condition', new_condition_path

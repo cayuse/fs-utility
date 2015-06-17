@@ -1,0 +1,21 @@
+
+<h1>Listing students for:</h1>
+<h2><%= just_display_site %><br>
+<%= just_display_track%></h2>
+<br>
+<%= button_to "Remove All", :controller=>"students", :action=>"drop_all"%>
+<br>
+
+<table width="100%" border="1" cellpadding="0" cellspacing="0" style=cursor:pointer>
+  <tr>
+    <th width="10%">Number</th>
+    <th width="30%">Name</th>
+    <th width="20%">Homeroom</th>
+    <th width="10%">Grade</th>
+  </tr>
+</table>
+<% for student in @students %>
+  <div id='<%="stu_#{student.number}"%>'; class="">
+    <%= render :partial => 'student', :locals => {:student => student} %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+h1 Editing Order For: #{@weeklydfcorder.site.name}
+h2 Week of #{h @weeklydfcorder.weeklyorderreq.week.strftime("%b %d, %Y")}
+= simple_form_for @weeklydfcorder do |f|
+  - for orderitem in @weeklydfcorder.orderitems.sort
+    = render :partial => 'item', :locals => {:orderitem => orderitem, :f => f, :open=>"open" }
+    br
+    
+  - for orderitem in @newitems
+    = render :partial => 'item', :locals => {:orderitem => orderitem, :f => f, :open=>"close" }
+    br
+  = hidden_field :referred, :referred, :value=>request.referer
+  p.= f.submit "Update", :onclick=>"this.disabled = true; this.value = 'Please Wait...';form.submit()"
+
+p
+  = link_to 'Show', @weeklydfcorder
+  = " | "
+  = link_to 'Back', weeklydfcorders_path

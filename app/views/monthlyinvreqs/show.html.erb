@@ -1,0 +1,39 @@
+<p>
+  <b>Sitetype:</b>
+  <%=h @monthlyinvreq.sitetype.name %>
+</p>
+
+<p>
+  <b>Month:</b>
+  <%=h @monthlyinvreq.month.strftime('%B %Y') %>
+</p>
+
+<p>
+  <b>Available:</b>
+  <%=h @monthlyinvreq.start.strftime('  %A, %b %d, %Y') %>
+</p>
+
+<p>
+  <b>Due:</b>
+  <%=h @monthlyinvreq.due.strftime('  %A, %b %d, %Y') %>
+</p>
+
+
+<%= link_to 'Edit', edit_monthlyinvreq_path(@monthlyinvreq) %> |
+<%= link_to 'Back', monthlyinvreqs_path %>
+
+<% if @monthlyinvreq.monthlyinvs.length > 0 %>
+  <% row_class = cycle("cssAlternating1", "cssAlternating2") %>
+  <br><br><br>
+  <h2> Sites with inventories for this request </h2>
+  <table>
+    <tr>
+      <th>Click To Edit</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% for monthlyinv in @monthlyinvreq.monthlyinvs %>
+      <%= render :partial => 'order', :locals => {:monthlyinv => monthlyinv, :row_class => row_class} %>
+    <% end %>
+  </table>
+<% end %>
