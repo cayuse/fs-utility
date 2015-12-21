@@ -19,9 +19,9 @@ class Site < ActiveRecord::Base
   validates_format_of :state, :with=>/[A-Z][A-Z]/
   validates_length_of :state, :is => 2, :message => "is two Letters only e.g. CA"
   validates_length_of :zip, :is => 5, :message => "is 5 digits only"
-  validates_length_of :phone, :is => 10, :message => "is 10 digits with area code"
-  validates_length_of :nurse_phone, :is => 10, :message => "is 10 digits with area code"
-  validates_numericality_of :phone, :zip, :nurse_phone
+ # validates_length_of :phone, :is => 10, :message => "is 10 digits with area code"
+ # validates_length_of :nurse_phone, :is => 10, :message => "is 10 digits with area code"
+  #validates_numericality_of :phone, :zip, :nurse_phone
   
   def <=> (other)
     number <=> other.number
@@ -30,8 +30,8 @@ class Site < ActiveRecord::Base
   private
   
   def fix_phones
-    phone.gsub!(/\D/,"")
-    nurse_phone.gsub!(/\D/,"")
+#    phone.gsub!(/\D/,"")
+#    nurse_phone.gsub!(/\D/,"")
   end
   
   def fix_state

@@ -1,0 +1,454 @@
+
+Path: /etc/ImageMagick/type-ghostscript.xml
+  Font: AvantGarde-Book
+    family: AvantGarde
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/a010013l.pfb
+  Font: AvantGarde-BookOblique
+    family: AvantGarde
+    style: Oblique
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/a010033l.pfb
+  Font: AvantGarde-Demi
+    family: AvantGarde
+    style: Normal
+    stretch: Normal
+    weight: 600
+    glyphs: /usr/share/fonts/type1/gsfonts/a010015l.pfb
+  Font: AvantGarde-DemiOblique
+    family: AvantGarde
+    style: Oblique
+    stretch: Normal
+    weight: 600
+    glyphs: /usr/share/fonts/type1/gsfonts/a010035l.pfb
+  Font: Bookman-Demi
+    family: Bookman
+    style: Normal
+    stretch: Normal
+    weight: 600
+    glyphs: /usr/share/fonts/type1/gsfonts/b018015l.pfb
+  Font: Bookman-DemiItalic
+    family: Bookman
+    style: Italic
+    stretch: Normal
+    weight: 600
+    glyphs: /usr/share/fonts/type1/gsfonts/b018035l.pfb
+  Font: Bookman-Light
+    family: Bookman
+    style: Normal
+    stretch: Normal
+    weight: 300
+    glyphs: /usr/share/fonts/type1/gsfonts/b018012l.pfb
+  Font: Bookman-LightItalic
+    family: Bookman
+    style: Italic
+    stretch: Normal
+    weight: 300
+    glyphs: /usr/share/fonts/type1/gsfonts/b018032l.pfb
+  Font: Courier
+    family: Courier
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n022003l.pfb
+  Font: Courier-Bold
+    family: Courier
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n022004l.pfb
+  Font: Courier-BoldOblique
+    family: Courier
+    style: Oblique
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n022024l.pfb
+  Font: Courier-Oblique
+    family: Courier
+    style: Oblique
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n022023l.pfb
+  Font: fixed
+    family: Helvetica
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n019003l.pfb
+  Font: Helvetica
+    family: Helvetica
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n019003l.pfb
+  Font: Helvetica-Bold
+    family: Helvetica
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n019004l.pfb
+  Font: Helvetica-BoldOblique
+    family: Helvetica
+    style: Italic
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n019024l.pfb
+  Font: Helvetica-Narrow
+    family: Helvetica Narrow
+    style: Normal
+    stretch: Condensed
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n019043l.pfb
+  Font: Helvetica-Narrow-Bold
+    family: Helvetica Narrow
+    style: Normal
+    stretch: Condensed
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n019044l.pfb
+  Font: Helvetica-Narrow-BoldOblique
+    family: Helvetica Narrow
+    style: Oblique
+    stretch: Condensed
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n019064l.pfb
+  Font: Helvetica-Narrow-Oblique
+    family: Helvetica Narrow
+    style: Oblique
+    stretch: Condensed
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n019063l.pfb
+  Font: Helvetica-Oblique
+    family: Helvetica
+    style: Italic
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n019023l.pfb
+  Font: NewCenturySchlbk-Bold
+    family: NewCenturySchlbk
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/c059016l.pfb
+  Font: NewCenturySchlbk-BoldItalic
+    family: NewCenturySchlbk
+    style: Italic
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/c059036l.pfb
+  Font: NewCenturySchlbk-Italic
+    family: NewCenturySchlbk
+    style: Italic
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/c059033l.pfb
+  Font: NewCenturySchlbk-Roman
+    family: NewCenturySchlbk
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/c059013l.pfb
+  Font: Palatino-Bold
+    family: Palatino
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/p052004l.pfb
+  Font: Palatino-BoldItalic
+    family: Palatino
+    style: Italic
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/p052024l.pfb
+  Font: Palatino-Italic
+    family: Palatino
+    style: Italic
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/p052023l.pfb
+  Font: Palatino-Roman
+    family: Palatino
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/p052003l.pfb
+  Font: Symbol
+    family: Symbol
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/s050000l.pfb
+  Font: Times-Bold
+    family: Times
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n021004l.pfb
+  Font: Times-BoldItalic
+    family: Times
+    style: Italic
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n021024l.pfb
+  Font: Times-Italic
+    family: Times
+    style: Italic
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n021023l.pfb
+  Font: Times-Roman
+    family: Times
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n021003l.pfb
+
+Path: System Fonts
+  Font: Century-Schoolbook-Bold
+    family: Century Schoolbook
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/c059016l.pfb
+  Font: Century-Schoolbook-Bold-Italic
+    family: Century Schoolbook
+    style: Italic
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/c059036l.pfb
+  Font: Century-Schoolbook-Italic
+    family: Century Schoolbook
+    style: Italic
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/c059033l.pfb
+  Font: Century-Schoolbook-Roman
+    family: Century Schoolbook
+    style: Normal
+    stretch: Normal
+    weight: 500
+    glyphs: /usr/share/fonts/type1/gsfonts/c059013l.pfb
+  Font: DejaVu-Sans-Bold
+    family: DejaVu Sans
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+  Font: DejaVu-Sans-Book
+    family: DejaVu Sans
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+  Font: DejaVu-Sans-Mono-Bold
+    family: DejaVu Sans Mono
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf
+  Font: DejaVu-Sans-Mono-Book
+    family: DejaVu Sans Mono
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf
+  Font: DejaVu-Serif-Bold
+    family: DejaVu Serif
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf
+  Font: DejaVu-Serif-Book
+    family: DejaVu Serif
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf
+  Font: Dingbats-Regular
+    family: Dingbats
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/d050000l.pfb
+  Font: Nimbus-Mono-Bold
+    family: Nimbus Mono
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n022004l.pfb
+  Font: Nimbus-Mono-Bold-Oblique
+    family: Nimbus Mono
+    style: Oblique
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n022024l.pfb
+  Font: Nimbus-Mono-Regular
+    family: Nimbus Mono
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n022003l.pfb
+  Font: Nimbus-Mono-Regular-Oblique
+    family: Nimbus Mono
+    style: Oblique
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n022023l.pfb
+  Font: Nimbus-Roman-No9-Medium
+    family: Nimbus Roman No9
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n021004l.pfb
+  Font: Nimbus-Roman-No9-Medium-Italic
+    family: Nimbus Roman No9
+    style: Italic
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n021024l.pfb
+  Font: Nimbus-Roman-No9-Regular
+    family: Nimbus Roman No9
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n021003l.pfb
+  Font: Nimbus-Roman-No9-Regular-Italic
+    family: Nimbus Roman No9
+    style: Italic
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n021023l.pfb
+  Font: Nimbus-Sans-Bold
+    family: Nimbus Sans
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n019004l.pfb
+  Font: Nimbus-Sans-Bold-Condensed
+    family: Nimbus Sans
+    style: Normal
+    stretch: Condensed
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n019044l.pfb
+  Font: Nimbus-Sans-Bold-Condensed-Italic
+    family: Nimbus Sans
+    style: Italic
+    stretch: Condensed
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n019064l.pfb
+  Font: Nimbus-Sans-Bold-Italic
+    family: Nimbus Sans
+    style: Italic
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/n019024l.pfb
+  Font: Nimbus-Sans-Regular
+    family: Nimbus Sans
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n019003l.pfb
+  Font: Nimbus-Sans-Regular-Condensed
+    family: Nimbus Sans
+    style: Normal
+    stretch: Condensed
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n019043l.pfb
+  Font: Nimbus-Sans-Regular-Condensed-Italic
+    family: Nimbus Sans
+    style: Italic
+    stretch: Condensed
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n019063l.pfb
+  Font: Nimbus-Sans-Regular-Italic
+    family: Nimbus Sans
+    style: Italic
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/n019023l.pfb
+  Font: Standard-Symbols-Regular
+    family: Standard Symbols
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/s050000l.pfb
+  Font: URW-Bookman-Demi-Bold
+    family: URW Bookman
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/b018015l.pfb
+  Font: URW-Bookman-Demi-Bold-Italic
+    family: URW Bookman
+    style: Italic
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/b018035l.pfb
+  Font: URW-Bookman-Light
+    family: URW Bookman
+    style: Normal
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/b018012l.pfb
+  Font: URW-Bookman-Light-Italic
+    family: URW Bookman
+    style: Italic
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/b018032l.pfb
+  Font: URW-Chancery-Medium-Italic
+    family: URW Chancery
+    style: Italic
+    stretch: Normal
+    weight: 500
+    glyphs: /usr/share/fonts/type1/gsfonts/z003034l.pfb
+  Font: URW-Gothic-Book
+    family: URW Gothic
+    style: Normal
+    stretch: Normal
+    weight: 300
+    glyphs: /usr/share/fonts/type1/gsfonts/a010013l.pfb
+  Font: URW-Gothic-Book-Oblique
+    family: URW Gothic
+    style: Oblique
+    stretch: Normal
+    weight: 300
+    glyphs: /usr/share/fonts/type1/gsfonts/a010033l.pfb
+  Font: URW-Gothic-Demi
+    family: URW Gothic
+    style: Normal
+    stretch: Normal
+    weight: 600
+    glyphs: /usr/share/fonts/type1/gsfonts/a010015l.pfb
+  Font: URW-Gothic-Demi-Oblique
+    family: URW Gothic
+    style: Oblique
+    stretch: Normal
+    weight: 600
+    glyphs: /usr/share/fonts/type1/gsfonts/a010035l.pfb
+  Font: URW-Palladio-Bold
+    family: URW Palladio
+    style: Normal
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/p052004l.pfb
+  Font: URW-Palladio-Bold-Italic
+    family: URW Palladio
+    style: Italic
+    stretch: Normal
+    weight: 700
+    glyphs: /usr/share/fonts/type1/gsfonts/p052024l.pfb
+  Font: URW-Palladio-Italic
+    family: URW Palladio
+    style: Italic
+    stretch: Normal
+    weight: 400
+    glyphs: /usr/share/fonts/type1/gsfonts/p052023l.pfb
+  Font: URW-Palladio-Roman
+    family: URW Palladio
+    style: Normal
+    stretch: Normal
+    weight: 500
+    glyphs: /usr/share/fonts/type1/gsfonts/p052003l.pfb

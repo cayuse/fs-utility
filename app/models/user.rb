@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     end
 
     def administrator?
-      self.role == "admin"
+      (self.role == "admin" || self.role == "distadmin")
     end
 
     def bid_admin?

@@ -1,2 +1,6 @@
 development:
   min_infix_len: 3
+  mysql41: 9306
+production:
+  mysql41: 9306
+  min_infix_len: 3

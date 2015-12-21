@@ -17,16 +17,16 @@ qtys = Orderitem::QTYS
             number_to_currency(totcharges)
         ]
 
-        pdf.font("Courier", :size => 8)
+        pdf.font("Courier", :size => 12)
         pdf.text \
 %{Anaheim Union High School District              Invoice No:  #{(weeklydfcorder.weeklyorderreq.week + day.days).strftime("#{weeklydfcorder.site.number}-%Y%m%d")}
 District Food Center Invoice                    Generated:   #{Time.now}}
-        pdf.font("Courier", :style=> :bold, :size => 8)
+        pdf.font("Courier", :style=> :bold, :size => 12)
         pdf.text %{
 Deliver to:    #{weeklydfcorder.site.name}
 Delivery Date: #{(weeklydfcorder.weeklyorderreq.week + day.days).strftime('%A, %B %d, %Y')}
 }
-        pdf.font("Courier", :size => 8)
+        pdf.font("Courier", :size => 12)
         invoice(pdf, data)
         pdf.start_new_page
     end

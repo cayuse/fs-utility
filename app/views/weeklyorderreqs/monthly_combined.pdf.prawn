@@ -13,7 +13,7 @@ itemtypes =  @orderitems.map {|itm| itm.item.itemtype}.uniq.sort
 #dates.each_with_index {|d,i| puts "Date = #{d}, Index = #{i}, QTY = #{qtys[i]}, itmdate #{a.send(d)}, itmqty = #{a.send(qtys[i])}"}
 
 ######## DISPLAY
-pdf.font("Courier", :size => 8)
+pdf.font("Courier", :size => 12)
 pdf.text \
 %{Anaheim Union High School District              Generated:   #{Time.now}
 Monthly Order Totals                            Month Of:    #{@date.strftime("%b-%Y")}

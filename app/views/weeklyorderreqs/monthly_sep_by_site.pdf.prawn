@@ -15,7 +15,7 @@ itemtypes =  @orderitems.map {|itm| itm.item.itemtype}.uniq.sort
 @sitetypes.sort.each do |st|
   st.sites.sort.each do |site|
 ######## DISPLAY
-pdf.font("Courier", :size => 8)
+pdf.font("Courier", :size => 12)
 pdf.text \
 %{Anaheim Union High School District              Generated:   #{Time.now}
 Monthly Order Totals For: #{site.name}

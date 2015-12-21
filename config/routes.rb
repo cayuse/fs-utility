@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  resources :renames
 
 post 'monthlyinvreqs/dispatch_pdf', to: 'monthlyinvreqs#dispatch_pdf'
 post 'monthlyinvreqs/new', to: 'monthlyinvreqs#new'
