@@ -51,7 +51,8 @@ pickle-email-*.html
 .zeus.sock
 
 # some stuff specific to this project
-*.db
+transition*.db
+db.back
 /db/sphinx/*
 /app/assets/system/*
 
