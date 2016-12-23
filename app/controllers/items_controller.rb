@@ -54,10 +54,10 @@ class ItemsController < ApplicationController
   end
 
   def update
-    page = params[:page][:page] || 1
-    params[:item][:sitetype_ids] ||= []
 
     @item = Item.find(params[:id])
+    page = params[:page][:page] || 1
+    params[:item][:sitetype_ids] ||= []
     if @item.update(item_params)
       if params[:price][:start].blank? || @item.update_price(params[:price])
       flash[:notice] = 'Item was successfully updated.'
@@ -73,17 +73,18 @@ class ItemsController < ApplicationController
   end
 
   def expire
-    @item = Item.find(params[:item][:id])
-    if !(params[:item][:price][:expire].empty?)
-      @expire = Date.parse(params[:item][:price][:expire]).monday
-      price = @item.current_price
-      price.expire = @expire
+    @item  = Item.find(params[:item][:id])
+    @price = Price.find(params[:price][:id])
+    if !(params[:price][:expire].empty?)
+      @expire = Date.parse(params[:price][:expire]).monday
 
-      orders = Orderitem.find(:all, :conditions=>["item_id = ?", @item.id])
-      @orderitems = orders.select{|i| i.weeklydfcorder.weeklyorderreq.week > price.expire}
+      orders = Orderitem.where(item_id:  @item.id)
+      @orderitems = orders.select{|i| i.weeklydfcorder.weeklyorderreq.week > @expire}
       if @orderitems.empty?
-        if price.save
-          flash[:notice] = "item was expired on #{price.expire}."
+        #if price.save
+        if @price.update(price_params)
+          @item.itemlocs.clear
+          flash[:notice] = "item was expired on #{@expire}."
           redirect_to(items_url)
         else
           flash[:error] = 'item could not be expired.'
@@ -128,6 +129,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :units, :issue, :sort, :mon, :tue, :wed, :thu, :fri, :itemtype_id,
                                  {:sitetype_ids => []},
                                  {:prices_attributes => [:price, :cost, :fmv, :start]} )
+  end
+  def price_params
+    params.require(:price).permit(:expire)
   end
 
 end

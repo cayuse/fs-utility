@@ -1,21 +1,7 @@
 <%= content_for :body_attributes, "onload='REDIPS.drag.init();'" %>
 <h1><%= h @site.name %>'s inventory storage Locations</h1>
-<h2>You can drag these locations to set their order</h2>
+<h2>You can drag these locations. Click the heading to set item order</h2>
 <br>
-
-
-<div class="dropdown">
-  <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-    Item Categories
-    <b class="caret"></b>
-  </a>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-	<% Itemtype.find(Monthlyinvreq::VALID_ITEM_TYPES).each do |itype| %>
-	  <%#= button_to_remote itype.name, :url => {:action => "setup", :search => itype.id, :format => :js}, :method => :get%> &nbsp;
-	  <%= link_to itype.name, {action: "setup", search: itype.id }, remote: true, form_class: "button" %>&nbsp;
-	<% end %>
-  </ul>
-</div>
 
 
 <%= form_tag(url_for(:action => "setup"), :remote => true) do %>

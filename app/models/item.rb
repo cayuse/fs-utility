@@ -12,6 +12,8 @@ class Item < ActiveRecord::Base
   has_many :monthlysites, :through => :monthlysitems, :source=> "site"
   has_many :itemallergens
   has_many :allergens, :through => :itemallergens
+  has_many :itemlocs, :dependent => :destroy
+
   
   
   accepts_nested_attributes_for :prices

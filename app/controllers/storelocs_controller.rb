@@ -19,7 +19,8 @@ class StorelocsController < ApplicationController
     params[:search] ||= Monthlyinvreq::VALID_ITEM_TYPES.first
     if @site = Setting.current_site(current_user)
       if params[:find]
-        @items = Item.search params[:find], :sort_by => :sort
+        itms = Item.search params[:find], :sort_by => :sort
+        @items = (itms.select { |b| !b.expired? })
       end
       unless @items
         @storelocs = Storeloc.where(site_id: @site.id).order(:number)
