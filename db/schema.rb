@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150911110942) do
+ActiveRecord::Schema.define(version: 20170106193934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -273,6 +273,9 @@ ActiveRecord::Schema.define(version: 20150911110942) do
     t.boolean  "wed"
     t.boolean  "thu"
     t.boolean  "fri"
+    t.string   "mfgname"
+    t.string   "mfgcode"
+    t.string   "ordercode"
   end
 
   create_table "itemtypes", force: true do |t|

@@ -24,7 +24,9 @@ class StorelocsController < ApplicationController
       end
       unless @items
         @storelocs = Storeloc.where(site_id: @site.id).order(:number)
-        @items = Item.where(itemtype_id: params[:search]).includes(:sitetypes).order(:sort).where(:sitemizations => {:sitetype_id => @site.sitetype.id})
+        @items = []
+        # changed to just give an empty list on load, no sense in pre-loading the entire list no one is going to use it
+        #= Item.where(itemtype_id: params[:search]).includes(:sitetypes).order(:sort).where(:sitemizations => {:sitetype_id => @site.sitetype.id})
         @storeTemp = [].push @items
         @storelocs.each do |loc|
           @storeTemp.push loc.itemlocs.sort.map {|m| m.item}
