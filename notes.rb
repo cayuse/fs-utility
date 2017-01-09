@@ -65,6 +65,7 @@ end
 ## results
 ##  => ["Apron/Bib", "GOL-1532-1", "28x46 Plastic Aprons", "BOX", "20/50", "1.65"] 
 ##  => #<Item id: nil, name: nil, units: nil, issue: nil, sort: nil, created_at: nil, updated_at: nil, itemtype_id: nil, mon: nil, tue: nil, wed: nil, thu: nil, fri: nil, mfgname: nil, mfgcode: nil, ordercode: nil> 
+
 day = Date.today - 2
 items.each do |itm|
   i = Item.where(name: itm[2])
@@ -86,19 +87,65 @@ items.each do |itm|
   b.save!
 end
 
+
+
 #### gold star
+require 'csv'
+day = Date.today - 2
+
+items = CSV.read("/home/shared/inventory_imports/gs used.csv");1
+used = {}
+items.each do |itm|
+  used[itm[0]] = itm[0]
+end
+
+
 items = CSV.read("/home/shared/inventory_imports/Gold Star raw.csv");1
 items = items.uniq;1
+list = {}
+items.each do |itm|
+  itm[2].gsub!("\"", " Inch")
+  list[itm[3]] ||= 0
+  list[itm[3]] += 1
+end;1
+
 
 items.each do |itm|
-  itm[3] = itm[3].titleize
-  itm[10] ||= itm[2]
-  itm[10] = itm[10].titleize
-  itm[8] ||= ""
-  itm[9] ||= ""
-  itm[8].gsub!("$","")
-  itm[9].gsub!("$","")
+  if used[itm[0]]
+    if list[itm[3]] > 1
+      itm[3] = itm[3] + " " + itm[5]
+    end
+    itm[3] = itm[3].titleize
+    itm[10] ||= itm[2]
+    itm[10] = itm[10].titleize
+    itm[8] ||= ""
+    itm[9] ||= ""
+    itm[8].gsub!("$","")
+    itm[9].gsub!("$","")
+    i = Item.where(name: itm[3])
+    i = i.first
+    i ||= Item.new
+    i.name = itm[3]
+    i.issue = itm[4]
+    i.units = itm[5]
+    i.mfgname = itm[10]
+    i.mfgcode = itm[1]
+    i.ordercode = itm[0]
+    i.itemtype_id = itm[11]
+    i.itemtype_id ||= 7
+    i.save!
+    b = i.prices.build
+    b.price_in_cents = itm[9].to_f * 100
+    b.cost_in_cents = itm[9].to_f * 100
+    b.fmv_in_cents = itm[9].to_f * 100
+    if b.fmv_in_cents > 0
+      i.itemtype_id = 16
+    end
+    b.start = day
+    b.save!
+  end
 end;1
+
 
 
 #<Itemtype id: 3, name: "DFC Order Food", created_at: "2009-01-07 18:25:27", updated_at: "2009-11-09 23:31:26", colorcode: "d55db6">
