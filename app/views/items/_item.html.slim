@@ -27,8 +27,8 @@ div class="container"
             -for price in item.prices
               -if price != item.current_price
                 tr
-                  td[class="cssToday1"]#{"&nbsp;"}
-                  td[class="cssToday1"]#{"&nbsp;"}
+                  td[class="cssToday1"]#{raw "&nbsp;"}
+                  td[class="cssToday1"]#{raw "&nbsp;"}
                   td[class="cssNoDay1"]#{ number_to_currency(price.cost) }
                   td[class="cssNoDay1"]#{ number_to_currency(price.price) }
                   td[class="cssNoDay1"]#{ number_to_currency(price.fmv) }
@@ -38,5 +38,5 @@ div class="container"
             -if item.itemtype
               td[colspan=7 class="cssToday1"] #{item.itemtype.name }
             -else
-              td[colspan=7 class="cssNoDay1"] #{"&nbsp;"}
+              td[colspan=7 class="cssNoDay1"] #{raw "&nbsp;"}
 

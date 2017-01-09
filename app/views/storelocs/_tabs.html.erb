@@ -1,6 +1,10 @@
 <div id="replaceable">
 <% items.each do |item| %>
-<div id="<%= item.id%>" class="drag t3 clone"><%= hidden_field_tag("index[none][]", item.id , :class=>'song') -%><%=h item.name %></div>
+<div id="<%= item.id%>" class="drag t3 clone"><%= hidden_field_tag("index[none][]", item.id , :class=>'song') -%>
+<%=h item.mfgcode %></br>
+<%=h item.mfgname %></br>
+<%=h item.name %>
+</div>
 <%end %>
 </div>
 

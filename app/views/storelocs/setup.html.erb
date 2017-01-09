@@ -34,7 +34,11 @@
         <% else %>
         <td>
           <% items.each do |item| %>
-          <div id="<%= item.id%>" class="drag t1"><%= hidden_field_tag("index[#{@storelocs[idx-1].id}][]", item.id , :class=>'song') -%><%= item.name %></div>
+          <div id="<%= item.id%>" class="drag t1"><%= hidden_field_tag("index[#{@storelocs[idx-1].id}][]", item.id , :class=>'song') -%>
+            <%=h item.mfgcode %></br>
+            <%=h item.mfgname %></br>
+            <%=h item.name %>
+          </div>
           <% end %>
         </td>
         <% end %>
