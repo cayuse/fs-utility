@@ -146,6 +146,24 @@ items.each do |itm|
   end
 end;1
 
+######## A & R
+
+require 'csv'
+items = CSV.read("/home/shared/inventory_imports/ar raw.csv");1
+
+sizes = []
+
+items.each do |a|
+  a[4] = ""
+  a[3].split(" ").each do |itm|
+    a[6] ||= "#"
+    if itm.match a[6]
+      sizes.push itm
+      a[3].gsub!(itm, "")
+      a[4] += itm
+    end
+  end
+end
 
 
 #<Itemtype id: 3, name: "DFC Order Food", created_at: "2009-01-07 18:25:27", updated_at: "2009-11-09 23:31:26", colorcode: "d55db6">
