@@ -1,4 +1,4 @@
-div class="collapsible" id="#{monthlyinvitem.qty ? "open" : "close"}" #{monthlyinvitem.item.name} <span></span>
+div class="collapsible" id="open" #{monthlyinvitem.item.name} <span></span>
 div class="container"
   div class="content"
     = f.simple_fields_for :monthlyinvitems, monthlyinvitem do |item_form|

@@ -66,6 +66,7 @@ end
 ##  => ["Apron/Bib", "GOL-1532-1", "28x46 Plastic Aprons", "BOX", "20/50", "1.65"] 
 ##  => #<Item id: nil, name: nil, units: nil, issue: nil, sort: nil, created_at: nil, updated_at: nil, itemtype_id: nil, mon: nil, tue: nil, wed: nil, thu: nil, fri: nil, mfgname: nil, mfgcode: nil, ordercode: nil> 
 
+
 day = Date.today - 2
 items.each do |itm|
   i = Item.where(name: itm[2])
@@ -150,8 +151,21 @@ end;1
 
 require 'csv'
 items = CSV.read("/home/shared/inventory_imports/ar raw.csv");1
+items = items.uniq
+items.pop
+items.shift
 
 sizes = []
+
+items.each do |a|
+  a[3].split(" ").each do |itm|
+    if itm.match "(#{a[2]})"
+      puts " (#{a[2]})"
+      a[3].gsub!(" (#{a[2]})", "")
+    end
+  end
+end;1
+
 
 items.each do |a|
   a[4] = ""
@@ -159,12 +173,45 @@ items.each do |a|
     a[6] ||= "#"
     if itm.match a[6]
       sizes.push itm
-      a[3].gsub!(itm, "")
+      a[3].gsub!(" #{itm}", "")
       a[4] += itm
     end
   end
 end
 
+["Snacks", "18105", "18105", "Pep-Farm Goldfish WG", "300-0.75oz", "CS", "300", " $52.92 "]
+["Snacks", "000111", "CRL111", "Raisels NoSugar (566) Lemon", "200-1.5oz", "CS", "200", " $69.96 "]
+["Snacks", "398400", "00569", "Raisels Sour Fruit Splash", "200-1.5oz", "CS", "200", " $69.96 "]
+
+usd = {}
+day = Date.today - 8
+items.each do |itm|
+    if usd[itm[3]]
+      itm[3] = itm[3] + " " + itm[4]
+    end
+    usd[itm[3]] = itm[3]
+    itm[3] = itm[3].titleize
+    a,b = itm[3].split(" ")
+    itm[0] = a + " " + b
+    itm[7].gsub!("$","")
+    i = Item.where(name: itm[3])
+    i = i.first
+    i ||= Item.new
+    i.name = itm[3]
+    i.issue = itm[5]
+    i.units = itm[4]
+    i.mfgname = itm[0]
+    i.mfgcode = itm[2]
+    i.ordercode = itm[1]
+    i.itemtype_id = 9
+    i.save!
+    b = i.prices.build
+    b.price_in_cents = itm[7].to_f * 100
+    b.cost_in_cents = itm[7].to_f * 100
+    b.fmv_in_cents = 0
+    b.start = day
+    b.save!
+end
 
 #<Itemtype id: 3, name: "DFC Order Food", created_at: "2009-01-07 18:25:27", updated_at: "2009-11-09 23:31:26", colorcode: "d55db6">
 #<Itemtype id: 4, name: "DFC Order Supplies", created_at: "2009-01-07 18:25:39", updated_at: "2009-11-09 23:31:34", colorcode: "bf5dd5">

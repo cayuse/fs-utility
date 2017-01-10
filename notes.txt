@@ -78,6 +78,10 @@ https://github.com/rails/turbolinks/#events
 http://rdoc.info/gems/slim/frames
 
 ########### thinking sphinx
+
+use rake tasks to set sphinx up, but change directories later
+and put in /etc/sphinxsearch
+
 rake ts:index
 rake ts:rebuild
 rake ts:start|stop|restart etc
@@ -92,6 +96,16 @@ RAILS_ENV='production' rake ts:rebuild
 RAILS_ENV='production' rake ts:index
 RAILS_ENV='production' rake ts:start
 http://auhsd-lightspeed10gb/access/web/change_user
+
+
+RAILS_ENV='production' rake ts:index
+RAILS_ENV='production' rake ts:rebuild
+cp config/production.sphinx.conf config/development.sphinx.conf
+cp config/production.sphinx.conf /home/shared/fs-utility/config/production.sphinx.conf
+cp config/production.sphinx.conf /home/shared/fs-utility/config/development.sphinx.conf
+
+itms = Item.search "@(name,mfgname,mfgcode,ordercode) 403573", :sort_by => :sort
+
 ############# bootstrap pagination
 https://github.com/bootstrap-ruby/will_paginate-bootstrap
 
