@@ -1,6 +1,5 @@
 h1 Editing Monthly Inventory for #{h @monthlyinv.monthlyinvreq.month.strftime("%B-%y")}
 = simple_form_for @monthlyinv do |f|
-
   div id="tabs"
     ul
       - @storelocs.each_with_index do |loc, idx|
