@@ -48,7 +48,7 @@ class Item < ActiveRecord::Base
   end
 
   def <=> (other)
-    sort <=> other.sort
+    sort.to_i <=> other.sort.to_i
   end
 
   def previous
