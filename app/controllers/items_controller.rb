@@ -126,7 +126,8 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :units, :issue, :sort, :mon, :tue, :wed, :thu, :fri, :itemtype_id,
+    params.require(:item).permit(:name, :units, :issue, :sort, :mon, :tue, :wed, :thu, :fri,
+                                 :mfgname, :mfgcode, :ordercode, :itemtype_id,
                                  {:sitetype_ids => []},
                                  {:prices_attributes => [:price, :cost, :fmv, :start]} )
   end

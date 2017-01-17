@@ -16,6 +16,19 @@
       <%= f.text_field :issue %>
     </p>
     <p>
+      Manufacturer's name<br />
+       <%= f.text_field :mfgname %>
+    </p>
+    <p>
+      Manufacturer's code <br />
+      <%= f.text_field :mfgcode %>
+    </p>
+    <p>
+      Order Code<br/>
+      <%= f.text_field :ordercode %>
+    </p> 
+    </p>
+    <p>
       <%= render :partial=>'pricehistory', :locals=>{:item => @item} %>
     </p>
     <p>

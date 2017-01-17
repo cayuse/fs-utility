@@ -13,6 +13,19 @@
         |Unit of issue
         br
         = f.text_field :issue
+      p
+        |Manufacturer's name
+        br
+        = f.text_field :mfgname
+      p
+        |Manufacturer's code
+        br
+        = f.text_field :mfgcode
+      p
+        |Order Code
+        br
+        = f.text_field :ordercode
+          
       = f.fields_for :price do |ff|
         p
           h2 Pricing Information
