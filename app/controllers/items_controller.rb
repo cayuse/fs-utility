@@ -4,7 +4,11 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html do
         #@page = params[:page] || 1
-        @items = Item.search (Riddle.escape params[:search]), :include => :prices,
+        terms = ""
+        if params[:search]
+          terms = Riddle.escape params[:search]
+        end
+        @items = Item.search terms, :include => :prices,
           :page => params[:page], :per_page => 50
       end
       format.pdf do
