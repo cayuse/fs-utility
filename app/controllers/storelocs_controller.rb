@@ -115,12 +115,13 @@ class StorelocsController < ApplicationController
   end
 
   def update_order
+    byebug;1;1
     site = Setting.current_site(current_user)
     new_index = params[:index]
     test_item = Storeloc.find new_index.first
 
     if test_item.site_id == site.id
-      new_index.each_with_index{|entry,i| Storeloc.update_all(["number = ?", i], ["id = ?", entry])}
+      new_index.each_with_index{|entry,i| Storeloc.where(id: entry).update_all(number: i) }
       flash[:notice] = "Storage locations successfully reordered"
       redirect_to storelocs_path
     else
