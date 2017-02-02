@@ -6,8 +6,6 @@ class Monthlyinvitem < ActiveRecord::Base
 
   validates_uniqueness_of :item_id, :scope => [:monthlyinv_id, :storeloc_id]
   def <=> (other)
-    other.item.sort <=> item.sort
+    other.item.sort.to_i <=> item.sort.to_i
   end
-
-
 end
