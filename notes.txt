@@ -118,7 +118,9 @@ Rails 4.1.1
 ####  Rake stuff
 rake assets:clean assets:precompile
 rake assets:clobber assets:precompile
-rake assets
+rake assets:precompile RAILS_ENV=production
+
+
 ######## rjs replace html ajax
 https://coderwall.com/p/kqb3xq
 
