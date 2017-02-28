@@ -1,0 +1,1 @@
+$(document).ready(function(){$("#collapsible-panels div").hide(),$("#collapsible-panels a").click(function(e){$(this).parent().next("#collapsible-panels div").slideToggle("slow"),$(this).parent().toggleClass("active"),e.preventDefault()})});
