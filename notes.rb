@@ -179,9 +179,23 @@ items.each do |a|
   end
 end
 
-["Snacks", "18105", "18105", "Pep-Farm Goldfish WG", "300-0.75oz", "CS", "300", " $52.92 "]
-["Snacks", "000111", "CRL111", "Raisels NoSugar (566) Lemon", "200-1.5oz", "CS", "200", " $69.96 "]
-["Snacks", "398400", "00569", "Raisels Sour Fruit Splash", "200-1.5oz", "CS", "200", " $69.96 "]
+#split out last part for issue
+#["Beverage", "740798", "740798", "Arrowhead Water 28-20oz", "Case", "54", " $8.25 "]
+#["Beverage", "005611", "005611", "Arrowhead Water Sport 24-23.7oz", "Case", "48", " $6.96 "]
+#["Beverage", "014112", "014112", "Coke Diet Value Pk 35-12oz", "Case", "12", " $14.94 "]
+#["Beverage", "024110", "024110", "Coke Value Pack 35-12oz", "Case", "19", " $14.94 "]
+items.each do |a|
+  issue = a[3].split(" ").last
+  a[3].gsub!(issue,"")
+  a.insert(4,issue)
+end
+#["Snack", "40200", "402001", "MJM Choc Bear Grhms (402001) 2pk 300-1oz", "300-1oz", "Case", "6", " $38.80 "]
+#["Snack", "300150", "300151", "MJM L/F Honey W/Fiber Grhms (300151) 3pk 150-1oz", "150-1oz", "Case", "117", " $18.75 "]
+#["Snack", "40900", "409001", "MJM Lemon Dino Grhms (409001) 2pk 300-1oz", "300-1oz", "Case", "1", " $40.56 "]
+
+#["Snacks", "18105", "18105", "Pep-Farm Goldfish WG", "300-0.75oz", "CS", "300", " $52.92 "]
+#["Snacks", "000111", "CRL111", "Raisels NoSugar (566) Lemon", "200-1.5oz", "CS", "200", " $69.96 "]
+#["Snacks", "398400", "00569", "Raisels Sour Fruit Splash", "200-1.5oz", "CS", "200", " $69.96 "]
 
 usd = {}
 day = Date.today - 8
@@ -194,9 +208,16 @@ items.each do |itm|
     a,b = itm[3].split(" ")
     itm[0] = a + " " + b
     itm[7].gsub!("$","")
-    i = Item.where(name: itm[3])
+    i = Item.where(mfgcode: itm[2])
     i = i.first
+    i ||= Item.where(name: itm[3])
+    i = i.first
+    old = false
+    if i
+      old = true
+    end
     i ||= Item.new
+    unless (i.new?)
     i.name = itm[3]
     i.issue = itm[5]
     i.units = itm[4]
@@ -210,7 +231,11 @@ items.each do |itm|
     b.cost_in_cents = itm[7].to_f * 100
     b.fmv_in_cents = 0
     b.start = day
-    b.save!
+    if old
+      i.update_price(b)
+    else
+      b.save!
+    end
 end
 
 #<Itemtype id: 3, name: "DFC Order Food", created_at: "2009-01-07 18:25:27", updated_at: "2009-11-09 23:31:26", colorcode: "d55db6">
