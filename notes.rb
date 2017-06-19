@@ -184,6 +184,9 @@ end
 #["Beverage", "005611", "005611", "Arrowhead Water Sport 24-23.7oz", "Case", "48", " $6.96 "]
 #["Beverage", "014112", "014112", "Coke Diet Value Pk 35-12oz", "Case", "12", " $14.94 "]
 #["Beverage", "024110", "024110", "Coke Value Pack 35-12oz", "Case", "19", " $14.94 "]
+require 'csv'
+items = CSV.read("/home/shared/inventory_imports/ar raw.csv");1
+items = items.uniq
 items.each do |a|
   issue = a[3].split(" ").last
   a[3].gsub!(issue,"")
@@ -198,7 +201,7 @@ end
 #["Snacks", "398400", "00569", "Raisels Sour Fruit Splash", "200-1.5oz", "CS", "200", " $69.96 "]
 
 usd = {}
-day = Date.today - 8
+day = Date.today
 items.each do |itm|
     if usd[itm[3]]
       itm[3] = itm[3] + " " + itm[4]
@@ -208,16 +211,14 @@ items.each do |itm|
     a,b = itm[3].split(" ")
     itm[0] = a + " " + b
     itm[7].gsub!("$","")
-    i = Item.where(mfgcode: itm[2])
-    i = i.first
-    i ||= Item.where(name: itm[3])
+    i = Item.where(ordercode: itm[1])
+    #i ||= Item.where(name: itm[3])
     i = i.first
     old = false
     if i
       old = true
     end
     i ||= Item.new
-    unless (i.new?)
     i.name = itm[3]
     i.issue = itm[5]
     i.units = itm[4]
@@ -232,11 +233,28 @@ items.each do |itm|
     b.fmv_in_cents = 0
     b.start = day
     if old
-      i.update_price(b)
-    else
-      b.save!
+      old_price = i.current_price
+      old_price.expire = b.start
     end
+    b.save!
 end
+
+items = Item.where("created_at > ?", 2.days.ago)
+items = items.to_a
+items.each do |itm|
+  has = itm.sitemizations.map{|m| m.sitetype_id}
+  unless (has.include? 4)
+    a = itm.sitemizations.build
+    a.sitetype_id = 4
+    a.save
+  end
+  unless (has.include? 1)
+    a = itm.sitemizations.build
+    a.sitetype_id = 1
+    a.save
+  end
+end
+itms = items.select{ |itm| itm.sitemizations.to_a.empty?}
 
 #<Itemtype id: 3, name: "DFC Order Food", created_at: "2009-01-07 18:25:27", updated_at: "2009-11-09 23:31:26", colorcode: "d55db6">
 #<Itemtype id: 4, name: "DFC Order Supplies", created_at: "2009-01-07 18:25:39", updated_at: "2009-11-09 23:31:34", colorcode: "bf5dd5">
