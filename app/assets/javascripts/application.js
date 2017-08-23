@@ -20,7 +20,5 @@
 //= require collapsible
 //= require cocoon
 //= require redips-drag-min
-//= require bootstrap-wysihtml5
-//= require bootstrap-wysihtml5/locales/es-ES
 //= require_tree .
 

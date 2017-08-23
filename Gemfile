@@ -32,7 +32,6 @@ gem 'prawn-table'
 gem "prawnto_2", :require => "prawnto"
 gem "prototype-rails"
 gem "spreadsheet"
-gem "bootstrap-wysihtml5-rails"
 
 group :development do
   gem 'better_errors'
