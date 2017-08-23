@@ -58,6 +58,7 @@ class Monthlyinv < ActiveRecord::Base
     storelocs.each do |loc|
       inv[loc] = []
       loc.itemlocs.sort.each do |item|
+        #debugger;1;1
         old = oldinvitems.select {|itm| itm.storeloc_id == loc.id && itm.item.id == item.item.id}
         old = old.shift
         if old
