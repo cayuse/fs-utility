@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    Rails.logger.info "new item #{params[:item]}"
     @item = Item.new(item_params)
     if @item.save
       @item.sort ||= @item.id
@@ -48,7 +49,7 @@ class ItemsController < ApplicationController
         flash[:notice] = 'Item was successfully created.'
         redirect_to(@item)
       else
-        @item.destroy
+        @item.destroy!
         flash[:error] = 'Item not created. You must enter Pricing Information for new items.'
         redirect_to(new_item_url)
       end
