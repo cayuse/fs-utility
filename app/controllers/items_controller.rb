@@ -115,8 +115,9 @@ class ItemsController < ApplicationController
 
   def reorder
     @items = Item.includes(:prices)
+    @items = @items.to_a
     @items.each do |item|
-      item.expired? ? item.sort+= 9999999 : item.sort += (item.itemtype.id * 1000)
+      item.expired? ? item.sort = item.sort.to_i + 9999999 : item.sort = item.sort.to_i + (item.itemtype.id * 1000)
     end
     @items.sort! {|a,b| a.sort <=> b.sort}
   end
