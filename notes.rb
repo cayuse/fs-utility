@@ -92,7 +92,7 @@ end
 
 #### gold star
 require 'csv'
-day = Date.today - 2
+day = Date.today - 30
 
 items = CSV.read("/home/shared/inventory_imports/gs used.csv");1
 used = {}
@@ -101,7 +101,7 @@ items.each do |itm|
 end
 
 
-items = CSV.read("/home/shared/inventory_imports/Gold Star raw.csv");1
+items = CSV.read("/home/shared/inventory_imports/sept-2017-gs.csv");1
 items = items.uniq;1
 list = {}
 items.each do |itm|
@@ -110,6 +110,11 @@ items.each do |itm|
   list[itm[3]] += 1
 end;1
 
+
+list = {}
+items.each do |itm|
+  list[itm[0]] = itm
+end;1
 
 items.each do |itm|
   if used[itm[0]]
