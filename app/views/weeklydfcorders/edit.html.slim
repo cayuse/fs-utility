@@ -5,8 +5,8 @@ h2 Week of #{h @weeklydfcorder.weeklyorderreq.week.strftime("%b %d, %Y")}
     = render :partial => 'item', :locals => {:orderitem => orderitem, :f => f, :open=>"open" }
     br
     
-  - for orderitem in @newitems
-    = render :partial => 'item', :locals => {:orderitem => orderitem, :f => f, :open=>"close" }
+  - for orderitem in @newitems.sort
+    = render :partial => 'item', :locals => {:orderitem => orderitem, :f => f, :open=>"open" }
     br
   = hidden_field :referred, :referred, :value=>request.referer
   p.= f.submit "Update", :onclick=>"this.disabled = true; this.value = 'Please Wait...';form.submit()"

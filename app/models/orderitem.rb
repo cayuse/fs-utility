@@ -11,7 +11,7 @@ class Orderitem < ActiveRecord::Base
   CHARGESCENTS = ["moncharge_in_cents", "tuecharge_in_cents", "wedcharge_in_cents", "thucharge_in_cents", "fricharge_in_cents"]
   
   def <=>(other)
-    item.sort.to_i <=> other.item.sort.to_i
+    item.name <=> other.item.name
   end
   
   def price

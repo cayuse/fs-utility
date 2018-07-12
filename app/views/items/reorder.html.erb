@@ -1,4 +1,4 @@
-<%= javascript_include_tag 'jquery.tablednd' %>
+<%= javascript_include_tag 'jquery.tablednd.min' %>
  <% form_tag :controller => :items, :action => :update_order do %>
   <br>
     <h1> Reorder Items </h1>
@@ -13,7 +13,7 @@
       </tr>
       <% @items.each do |item| %>
       <% bgcolor = item.expired? ? "f87372" : (item.itemtype.colorcode || "FFFFFF") %>
-      <tr bgcolor="#<%= bgcolor %>">
+<tr bgcolor="#c1c6fd">
         <%= hidden_field_tag("index[]", item.id.to_i, :class=>'song') -%>
         <td><%= item.name %></td>
         <td><%= item.units %></td>

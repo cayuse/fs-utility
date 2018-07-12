@@ -61,6 +61,7 @@ resources :settings
 
 post 'items/new',     to: "items#new"
 get 'items/reorder', to: "items#reorder"
+post 'items/update-order', to: "items#update_order"
 post 'items/expire', to: "items#expire"
 resources :items
 
