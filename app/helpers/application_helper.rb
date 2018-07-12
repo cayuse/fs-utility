@@ -301,4 +301,26 @@ module ApplicationHelper
           column(3).style :align => :left
     end
   end
+  
+  # This table generates tables for listing items etc.
+  def item_list_table(pdf, data)
+    if data.empty?
+      data = [["No Data", 0,0,0,0,0,0]]
+    end
+    data.unshift(["Units", "Issue", "Cost", "Price", "FMV", "Start Date", "Expire Date"])
+    pdf.table(data,
+      :column_widths => { 0 => 40, 1 => 40, 2 => 40, 3 => 40, 4 => 40, 5 => 90, 6 => 90 },
+      :row_colors         => ["ffffff","CCCCCC"],
+      ) do
+        row(0).style :align => :center
+        column(0).style :align => :left
+        column(1).style :align => :right
+        column(3).style :align => :right
+        column(2).style :align => :right
+        column(4).style :align => :right
+        column(5).style :align => :right
+        column(6).style :align => :right
+    end
+  end
+  
 end
