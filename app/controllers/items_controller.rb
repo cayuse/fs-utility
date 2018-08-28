@@ -33,25 +33,29 @@ class ItemsController < ApplicationController
 
   def create
     Rails.logger.info "new item #{params[:item]}"
-    @item = Item.new(item_params)
-    if @item.save
-      @item.sort ||= @item.id
-      @item.save
-      @price = @item.prices.build
-        @price.price= params[:item][:price][:price].to_f
-        @price.cost= params[:item][:price][:cost].to_f
-        @price.fmv= params[:item][:price][:fmv].to_f
-        @date = Date.strptime(params[:item][:price][:start], "%m/%d/%Y")
-        @price.start = @date.beginning_of_month
-        @price.item = @item
-        #@price.start = params[:item][:price][:start]
-      if @price.save
-        flash[:notice] = 'Item was successfully created.'
-        redirect_to(@item)
+    unless params[:item][:price][:start] == nil
+      @item = Item.new(item_params)
+      if @item.save
+        @item.sort ||= @item.id
+        @item.save
+        @price = @item.prices.build
+          @price.price= params[:item][:price][:price].to_f
+          @price.cost= params[:item][:price][:cost].to_f
+          @price.fmv= params[:item][:price][:fmv].to_f
+          @date = Date.strptime(params[:item][:price][:start], "%m/%d/%Y")
+          @price.start = @date.beginning_of_month
+          @price.item = @item
+          #@price.start = params[:item][:price][:start]
+        if @price.save
+          flash[:notice] = 'Item was successfully created.'
+          redirect_to(@item)
+        else
+          @item.destroy!
+          flash[:error] = 'Item not created. You must enter Pricing Information for new items.'
+          redirect_to(new_item_url)
+         end
       else
-        @item.destroy!
-        flash[:error] = 'Item not created. You must enter Pricing Information for new items.'
-        redirect_to(new_item_url)
+        render :action => "new"
       end
     else
       render :action => "new"
