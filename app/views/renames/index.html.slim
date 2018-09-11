@@ -1,0 +1,16 @@
+= simple_form_for :symbol, url: '/renames/1'  do |f|
+  h2
+   |  Site Number
+  br
+  = f.input :site, as: :string
+  br
+  h2 
+   | Line Number
+  br
+  = f.input :line, as: :string
+  br
+  h2 
+   | Wide Screen?
+  = f.input :wide, as: :string
+  br
+  = f.button :submit

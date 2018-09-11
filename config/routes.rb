@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   resources :renames
+  post 'renames/:id', to: 'renames#show'
 
 post 'monthlyinvreqs/dispatch_pdf', to: 'monthlyinvreqs#dispatch_pdf'
 post 'monthlyinvreqs/new', to: 'monthlyinvreqs#new'
