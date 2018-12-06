@@ -85,7 +85,8 @@ class ItemsController < ApplicationController
     @item  = Item.find(params[:item][:id])
     @price = Price.find(params[:price][:id])
     if !(params[:price][:expire].empty?)
-      @expire = Date.parse(params[:price][:expire]).monday
+      @expire = Date.strptime(params[:price][:expire], "%m/%d/%Y")
+      params[:price][:expire] = @expire
 
       orders = Orderitem.where(item_id:  @item.id)
       @orderitems = orders.select{|i| i.weeklydfcorder.weeklyorderreq.week > @expire}
