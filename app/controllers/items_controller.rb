@@ -13,6 +13,9 @@ class ItemsController < ApplicationController
       end
       format.pdf do
         @items = Item.order(:itemtype_id).includes(:prices)
+        if params[:active]
+            @items = @items.select { |i| !i.expired? }
+        end
       end
     end
   end
@@ -40,10 +43,14 @@ class ItemsController < ApplicationController
         @item.save
         @price = @item.prices.build
           @price.price= params[:item][:price][:price].to_f
+          @price.price ||= 0.0
           @price.cost= params[:item][:price][:cost].to_f
+          @price.cost ||= 0.0
           @price.fmv= params[:item][:price][:fmv].to_f
+          @price.fmv ||= 0.0
           @date = Date.strptime(params[:item][:price][:start], "%m/%d/%Y")
           @price.start = @date.beginning_of_month
+          @price.start ||= Date.today.beginning_of_month
           @price.item = @item
           #@price.start = params[:item][:price][:start]
         if @price.save
@@ -51,7 +58,7 @@ class ItemsController < ApplicationController
           redirect_to(@item)
         else
           @item.destroy!
-          flash[:error] = 'Item not created. You must enter Pricing Information for new items.'
+          flash[:notice] = 'Item not created. You must enter Pricing Information for new items.'
           redirect_to(new_item_url)
          end
       else
@@ -59,6 +66,9 @@ class ItemsController < ApplicationController
       end
     else
       render :action => "new"
+    end
+    if @item.prices.empty?
+	@item.destroy!
     end
   end
 
