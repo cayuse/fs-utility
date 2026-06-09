@@ -11,8 +11,10 @@ kitchen and warehouse staff. Published here as a work sample.
 ## Stack
 
 - **Ruby on Rails** — ERB views, Bootstrap front-end
-- RSpec specs under `spec/`
-- See `Gemfile` and `config/database.yml` for the full stack
+- **PostgreSQL** (ActiveRecord)
+- **Devise** authentication + **Pundit** authorization
+- **Thinking Sphinx** full-text search for fast indexed lookups
+- **RSpec** specs under `spec/`
 
 ## Running locally
 
