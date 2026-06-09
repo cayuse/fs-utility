@@ -1,149 +1,28 @@
-Fs Utility
-=========
+# fs-utility — Food-Services ordering & inventory system
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+A full-stack **Ruby on Rails** application built to run the food-services operations
+of a large school district (Anaheim Union High School District): daily ordering,
+production breakdowns, and monthly inventory across **44 campuses and a central
+processing facility**, used on 250+ point-of-sale and desktop systems.
 
-Diagnostics
--
+A real production system that replaced manual paper and spreadsheet workflows for
+kitchen and warehouse staff. Published here as a work sample.
 
-This application was built with recipes that are NOT known to work together.
+## Stack
 
-This application was built with preferences that are NOT known to work
-together.
+- **Ruby on Rails** — ERB views, Bootstrap front-end
+- RSpec specs under `spec/`
+- See `Gemfile` and `config/database.yml` for the full stack
 
-If the application doesn’t work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include these diagnostics:
+## Running locally
 
-We’d also like to know if you’ve found combinations of recipes or
-preferences that do work together.
+```sh
+bundle install
+rails db:setup
+rails server
+```
 
-Recipes:
+## Status
 
-* controllers
-* core
-* deployment
-* email
-* extras
-* frontend
-* gems
-* git
-* init
-* learn_rails
-* models
-* prelaunch
-* rails_bootstrap
-* rails_devise
-* rails_devise_pundit
-* rails_foundation
-* rails_omniauth
-* rails_signup_download
-* railsapps
-* readme
-* routes
-* saas
-* setup
-* testing
-* tests4
-* views
-
-Preferences:
-
-* git: true
-* apps4: rails-bootstrap
-* authentication: false
-* authorization: false
-* better_errors: true
-* database: default
-* deployment: none
-* devise_modules: false
-* email: none
-* form_builder: false
-* frontend: bootstrap3
-* local_env_file: false
-* pry: false
-* quiet_assets: true
-* starter_app: false
-* dev_webserver: webrick
-* prod_webserver: passenger
-* templates: erb
-* tests: rspec
-* continuous_testing: none
-* jsruntime: true
-* github: true
-
-Ruby on Rails
----
-
-This application requires:
-
--   Ruby
--   Rails
-
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
-
-Database
----
-
-This application uses SQLite with ActiveRecord.
-
-Development
--
-
--   Template Engine: ERB
--   Testing Framework: Test::Unit
--   Front-end Framework: Bootstrap 3.0 (Sass)
--   Form Builder: None
--   Authentication: None
--   Authorization: None
--   Admin: None
-
-
-
-
-
-
- delivery is disabled in development.
-
-Getting Started
-
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-Documentation and Support
-
-
-This is the only documentation.
-
-#### Issues
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-Similar Projects
--
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-Contributing
---
-
-If you make improvements to this application, please share with others.
-
--   Fork the project on GitHub.
--   Make your feature addition or bug fix.
--   Commit with Git.
--   Send the author a pull request.
-
-If you add functionality to this application, create an alternative
-implementation, or build an application that is similar, please contact
-me and I’ll add a note to the README so that others can find your work.
-
-Credits
---
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-License
---
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Archived. Built and maintained ~2014–2019. A few scratch files from the original
+working tree remain.
